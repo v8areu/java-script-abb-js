@@ -19,36 +19,39 @@ body {
 }
 
 .quote-container {
-  background-color: #ffffff;
-  min-height: 200px;
-  width: 400px;
+  background-color: #ffffaa;
+  min-height: 10%;
+  width: 30%;
   align-items: center;
   justify-content: center;
 }
 
 #quote-head {
-  min-height: 100px;
+  min-height: 50%;
   width: 100%;
-  background-color: red;
+  background-color: white;
   margin: auto;
+  padding: 10px 0 10px 0;
+  text-align: left;
 }
 
 #quote-author {
-  background-color: green;
+  background-color: white;
   height: 40px;
   width: 100%;
+  text-align: right;
 }
 
 #quote-footer {
   height: 60px;
   width: 100%;
-  background-color: cyan;
+  background-color: white;
 }
 
 #quote-footer-left {
   width: 50%;
   height: 100%;
-  background-color: black;
+  background-color: cyan;
   position: relative;
   float: left;
 }
@@ -56,6 +59,6 @@ body {
 #quote-footer-right {
   width: 50%;
   height: 100%;
-  background-color: grey;
+  background-color: white;
   float: right;
 }
