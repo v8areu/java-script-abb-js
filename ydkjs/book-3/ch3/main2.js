@@ -22,3 +22,15 @@ var myObject2 = {
 foo_funct();
 someFoo();
 myObject2.someFoo();
+
+//object literal
+var myObject3 = {
+  fooObj: function foooo() {
+    console.log("ahem foo");
+  }
+};
+
+var someOtherFoo = myObject3.fooObj;
+
+someOtherFoo();
+myObject3.fooObj();
