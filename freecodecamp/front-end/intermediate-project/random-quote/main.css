@@ -1,13 +1,65 @@
-body {
+body, html {
   margin: 0;
+	padding: 0;
+	height: 100%;
 }
 
 .site-background {
+	height: 100%;
   background-color: #9B59B6;
-  display: block;
 }
 
-body .site-background-upper,
-body .site-background-lower {
-  padding: 150px;
+.outer-box {
+	display: table;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+}
+
+.middle-box {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.inner-box {
+	overflow: hidden;
+	background-color: #ffffff;
+	margin-left: auto;
+	margin-right: auto;
+	width: 500px;
+	/* rounded corner */
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.box-text {
+	padding: 40px 0 10px 100px;
+}
+
+.box-author {
+	text-align: right;
+	padding: 0 50px 0 0;
+}
+
+.box-social-button {
+	float: left;
+	padding: 0 0 40px 50px;
+}
+
+.box-social-button a {
+	color: black;
+}
+
+.box-new-button {
+	float: right;
+	padding: 0 50px 40px 0;
+}
+
+.site-footer {
+	text-align: center;
+	padding-top: 10px;
 }
