@@ -3,8 +3,7 @@ $(document).ready(function() {
 	
 	// ========== NEW QUOTE FUNCTION ==========
 	$(".box-new-button").click(function(event) {
-		$.getJSON('quote.json', function(data) {
-			alert("ok!");
+		$.getJSON('test.json', function(data) {
 
 			var quote = data.quote;
 			var quoteLength = quote.length;

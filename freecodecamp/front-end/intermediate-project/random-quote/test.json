@@ -11,18 +11,14 @@
 			"bgColor": "#98FB98"
 		},
 		{
-			"author": "Freezing Iceeeee",
-			"quoteText": "I am cool!",
-			"bgColor": "#1E90FF"
-		},
-		{
 			"author": "Earthy Brown",
 			"quoteText": "Earth is a nice place to stay!",
 			"bgColor": "#8B4513"
 		},
-			"author": "Orange Sunset",
-			"quoteText": "Dusk is your best friend!",
-			"bgColor": "#FF4500"
+		{
+			"author": "Freezing Iceeeee",
+			"quoteText": "I am cool!",
+			"bgColor": "#1E90FF"
 		}
 	]
 }
