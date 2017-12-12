@@ -1,0 +1,34 @@
+body, html {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+.wrapper {
+	height: 100%;
+	background-color: blue;
+}
+
+.outer {
+	display: table;
+	position: absolute;
+	height: 100%;
+	width: 100%
+}
+
+.middle {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.inner {
+	overflow: hidden;
+	background-color: #fff;
+	margin: 0 auto 0 auto;
+	width: 400px;
+}
+
+.inner p {
+	padding: 0;
+	margin: 0;
+}
