@@ -24,8 +24,8 @@ body, html {
 .inner {
 	overflow: hidden;
 	background-color: #092B40;
-  color: #ffffff;
-  text-align: center;
+	color: #ffffff;
+	text-align: center;
 	margin: 0 auto 0 auto;
 	width: 400px;
 }
@@ -50,13 +50,53 @@ body, html {
   text-decoration: none;
 }
 
+.inner-search {
+	position: relative;
+}
+
 .search-icon input {
-  width: 30px;
-  height: 30px;
+  width: 34px;
+  height: 34px;
   margin: 10px;
   border: 4px solid #D96F32;
   background-color: #092B40;
   border-radius: 50%;
   cursor: pointer;
   color: #ffffff;
+}
+
+.close-search {
+	width: 1px;
+	margin: 10px;
+	height: 1px;
+	padding: 0;
+	background-color: #092B40;
+	position: absolute;
+	top: 6px;
+	right: 100px;
+}
+
+.close-search:before, .close-search:after {
+	content: ' ';
+	position: absolute;
+	width: 36px;
+	height: 4px;
+	background-color: white;
+	border-radius: 2px;
+	top: 10px;
+	box-shadow: 0 0 2px 0 #ccc;
+}
+
+.close-search:before {
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	transform: rotate(45deg);
+	left: 0px;
+}
+
+.close-search:after {
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	right: 0;
 }
