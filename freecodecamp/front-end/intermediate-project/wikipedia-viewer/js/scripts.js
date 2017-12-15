@@ -1,39 +1,42 @@
 $(document).ready(function() {
-  // function click for input form to be changed
-  var expanded = false;
-  $(".search-icon").click(function(event) {
-    
-
-	$(".search-icon input").css({
-          "width" : "250px",
-          "border-radius" : "30px",
-          "transition" : "0.25s",
-          "cursor" : "auto",
-          "padding" : "0 15px 0 15px"
-    });
+	// function click for input form to be changed
+	let expanded = false;
 	
-	if (!expanded) {
+	// expand magnifier
+	$(".search-icon input").click(function(event) {
 
-		$(".close-search").toggleClass("close-search-expand");
-		$(".close-search-expand").toggleClass("close-search");
-		expanded = true;
+		if (!expanded) {
 
-	}
+			$(".search-icon").toggleClass("search-icon-expand");
+			$(".search-icon-expand").toggleClass("search-icon");	
 
-  });
+			$(".close-search").toggleClass("close-search-expand");
+			$(".close-search-expand").toggleClass("close-search");
+			
+			expanded = true;
 
+		}
+
+	});
+
+	// un-expand magnifier
 	$(".close-search").click(function(event) {
 	
 		expanded = false;
 
-		$(".search-icon input").css({
-			"width" : "34px",
-			"height" : "34px",
-			"margin" : "10px",
-			"transition" : "0.25s",
-			"cursor" : "auto",
-		});
+		$(".search-icon-expand").toggleClass("search-icon");
+		$(".search-icon").toggleClass("search-icon-expand");
 
-
+		$(".close-search-expand").toggleClass("close-search");
+		$(".close-search").toggleClass("close-search-expand");
 	});	
+
+	let value;
+	// get value from input box
+	$("#search-query").keyup(function(e) {
+		if (e.keyCode === 13) {
+			value = $("#search-query").val();
+			alert(value);
+		}
+	});
 });
