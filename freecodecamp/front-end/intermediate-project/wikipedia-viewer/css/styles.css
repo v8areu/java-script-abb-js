@@ -72,32 +72,61 @@ body, html {
 	padding: 0;
 	background-color: #092B40;
 	position: absolute;
-	top: 6px;
-	right: 100px;
+	top: 18px;
+	right: 170px;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	transform: rotate(45deg);
 }
-/*
-.close-search:before, .close-search:after {
+
+.close-search::before {
+	content: ' ';
+	position: absolute;
+	width: 17px;
+	height: 4px;
+	background-color: #D96F32;
+	border-radius: 2px;
+	top: 9px;
+
+}
+
+.close-search::after{
+
+}
+
+.close-search-expand {
+	width: 1px;
+	margin: 10px;
+	height: 1px;
+	padding: 0;
+	background-color: #092B40;
+	position: absolute;
+	top: 16px;
+	right: 89px;
+}
+
+
+.close-search-expand::before, .close-search-expand::after {
 	content: ' ';
 	position: absolute;
 	width: 20px;
 	height: 4px;
 	background-color: #D96F32;
 	border-radius: 2px;
-	top: 9px;
-	box-shadow: 0 0 2px 0 #ccc;
+	/*box-shadow: 0 0 2px 0 #ccc;*/
 }
 
-.close-search:before {
+.close-search-expand::before {
 	-webkit-transform: rotate(45deg);
 	-moz-transform: rotate(45deg);
 	transform: rotate(45deg);
-	left: 0px;
+	left: -9px;
 }
 
-.close-search:after {
+.close-search-expand::after {
 	-webkit-transform: rotate(-45deg);
 	-moz-transform: rotate(-45deg);
 	transform: rotate(-45deg);
-	right: -19px;
+	right: -10px;
 }
-*/
+
