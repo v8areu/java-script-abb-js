@@ -1,17 +1,27 @@
 body, html {
 	margin: 0;
 	padding: 0;
+}
+
+html {
 	height: 100%;
+}
+
+body {
+	min-height: 100%;
+  height: 100%;
 }
 
 .wrapper {
 	height: 100%;
-	background-color: #092B40;
+  min-height: 100%;
 }
 
 .outer {
 	display: table;
 	position: absolute;
+	background-color: #092B40;
+  min-height: 100%;
 	height: 100%;
 	width: 100%
 }
@@ -154,9 +164,25 @@ body, html {
 	right: -10px;
 }
 
+#row-query-result {
+  width: 100%;
+  overflow: hidden;
+}
+
+#ul-query-result {
+  width: 100%;
+  list-style-type: none;
+  list-style: none;
+  left: 0;
+  display: block;
+  position: relative;
+  float: right;
+}
+
 .query-result-box {
-	display: block;
+	display: inline-block;
 	background-color: white;
-  	border: 4px solid #D96F32;
-	height: 200px;
+  border: 4px solid #D96F32;
+	height: 50px;
+  margin: 10px 0 10px 0;
 }
