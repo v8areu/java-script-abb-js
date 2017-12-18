@@ -26,17 +26,20 @@ $(document).ready(function() {
 	// un-expand magnifier
 	$(".close-search").click(function(event) {
 
-		expanded = false;
+    if (expanded) {
+      // switch the class
+      $(".search-icon-expand").toggleClass("search-icon");
+      $(".search-icon").toggleClass("search-icon-expand");
 
-    // switch the class
-		$(".search-icon-expand").toggleClass("search-icon");
-		$(".search-icon").toggleClass("search-icon-expand");
+      $(".close-search-expand").toggleClass("close-search");
+      $(".close-search").toggleClass("close-search-expand");
 
-		$(".close-search-expand").toggleClass("close-search");
-		$(".close-search").toggleClass("close-search-expand");
+      expanded = false;
 
-    // remove container wiki div
-    $("#container-query-result").remove();
+      // remove container wiki div
+      $("#container-query-result").remove();
+
+    }
 
     // if the search is onTop of the page, make it
     // move to the center with display: table cell
@@ -72,11 +75,19 @@ $(document).ready(function() {
 			value = $("#search-query").val();
 
       // move the box to top
-			$(".middle").css({"display": "block"});
+      if (!onTop) {
+        $(".middle").css({"display": "block"});
 
-			// delete the "Click icon to search" paraghraph
-			$(".search-info > p").remove();
-			onTop = true;
+        // delete the "Click icon to search" paraghraph
+        $(".search-info > p").remove();
+        onTop = true;
+      }
+
+      // delete the result if the search is on top of the pages
+      // rather fishy, but who cares?
+      if (onTop) {
+        $("#container-query-result").remove();
+      }
 
 			// add the container div block
 			jQuery("<div/>", {
@@ -98,18 +109,24 @@ $(document).ready(function() {
 			// loop each wikipedia API
 			// JSON URL
       // note, origin=* for bypassing the cross origin problem
-			let wikiBASE = 'https://en.wikipedia.org';
+      let wikiLANG = 'en'
+			let wikiBASE = 'https://' + wikiLANG + '.wikipedia.org';
 			let wikiAPI = "" +
         "/w/api.php?action=query" +
         "&origin=*" +
         "&format=json" +
         "&prop=extracts" +
+        "&continue=gsroffset||" +
+        "&titles=" +
         "&generator=search" +
+        "&converttitles=1" +
+        //"&excontinue=2" +
         "&exsentences=1" +
+        "&exlimit=10" +
         "&exintro=1" +
         "&explaintext=1" +
-        "&excontinue=1&" +
-        "gsrsearch=";
+        //"&excontinue=1&" +
+        "&gsrsearch=";
 			let searchQuery = $("#search-query").val();
 
       $.ajax({
@@ -120,13 +137,31 @@ $(document).ready(function() {
           let wikiPage = wikiData.query.pages;
 
           $.each(wikiPage, function(id, wikiInfo) {
+
+            // generate empy box and add the id as... their id
             jQuery("<li/>", {
-              class: 'query-result-box col-lg-8',
-              text: 'hey ' + id
+              class: 'query-result-box col-lg-12',
+              id: id
             }).appendTo("#ul-query-result");
+
+            // print the data from wikiInfo to each respective
+            // query box
+            jQuery("<a/>", {
+              href: wikiBASE + '/?curid=' + id,
+              target: '_blank'
+            }).appendTo("#" + id);
+
+            $("#" + id + " > a").append("<div>" + "</div>");
+            $("#" + id + " > a div")
+              .append("<span><strong>" +
+              wikiInfo['title'] +
+              "</strong></span>");
+
+            $("#" + id + " > a div")
+              .append("<br /><p>" +
+              wikiInfo['extract'] +
+              "</p>");
           });
-
-
         }
       });
 		} // if close bracket

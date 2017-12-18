@@ -27,6 +27,7 @@ body {
 }
 
 .middle {
+  margin-top: 20px;
 	display: table-cell;
 	vertical-align: middle;
 }
@@ -167,6 +168,8 @@ body {
 #row-query-result {
   width: 100%;
   overflow: hidden;
+  text-align: center;
+  margin: 0;
 }
 
 #ul-query-result {
@@ -177,12 +180,28 @@ body {
   display: block;
   position: relative;
   float: right;
+  overflow: hidden;
 }
 
 .query-result-box {
+  padding-top: 10px;
 	display: inline-block;
 	background-color: white;
   border: 4px solid #D96F32;
-	height: 50px;
+  min-height: 30px;
+  line-height: 30px;
   margin: 10px 0 10px 0;
+}
+
+.query-result-box:hover {
+  background-color: #c4c4c4;
+  cursor: pointer;
+}
+
+.query-result-box a {
+  color: black;
+}
+
+.query-result-box a:hover {
+  text-decoration: none;
 }
