@@ -1,0 +1,84 @@
+* {
+	font-family: arial, helvetica;
+}
+
+html, body {
+	padding: 0;
+	margin: 0;
+	height: 100%;
+}
+
+.wrapper {
+	background-color: #d5d5d5;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.twitch-window {
+	max-width: 700px;
+	overflow: hidden;
+	margin: 0 auto;
+	height: auto;
+	position: relative;
+}
+
+.twitch-header {
+	margin-top: 10px;
+	height: 90px;
+	background-color: #5C5457;
+}
+
+.twitch-title {
+	position: relative;
+	float: left;
+	width: 75%;
+	height: 100%;
+}
+
+.twitch-title > h2 {
+	line-height: 90px;
+	display: flex;
+	justify-content: center;
+	color: #ffffff;
+	margin: 0;
+}
+
+.twitch-status {
+	height: 90px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	justify-content: center;
+}
+
+.twitch-status > div {
+	width: 90px;
+	background-color: #E1E1E6;
+	padding-left: 3px;
+	padding-top: 2px;
+	margin-right: -73px;
+}
+
+.twitch-status > .active {
+	margin-right: 0;
+}
+
+.twitch-status > #all {
+	margin-bottom: 3px;
+}
+
+.twitch-status > #online {
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+
+.twitch-status > #offline {
+	margin-top: 3px;
+}
+
+.twitch-footer {
+	margin-top: 2px;
+	height: 10px;
+	background-color: #5C5457;
+}
