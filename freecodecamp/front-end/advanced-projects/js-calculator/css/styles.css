@@ -71,22 +71,18 @@ html, body {
 
 #calculator-screen > div {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
+  margin-right: 5px;
 }
 
 #calculator-screen p {
   font-size: 13pt;
   font-family: Iceland;
-  margin: auto;
 }
 
 #calculator-screen > div:first-child p {
   font-size: 25pt;
-}
-
-.flex-screen {
-
 }
 
 #screen-upper {
@@ -172,6 +168,9 @@ html, body {
   height: 40%;
 }
 
+button:focus {
+	outline: 0;
+}
 .calculator-outer button {
   display: flex;
   justify-content: center;
@@ -181,6 +180,10 @@ html, body {
   background-color: #3A3A3A;
   border-radius: 10px;
   box-shadow: 1px 1px 7px black;
+}
+
+.calculator-outer button:active {
+	box-shadow: 0 0 2px black;
 }
 
 .calculator-outer button p {
@@ -193,12 +196,19 @@ html, body {
   color: white;
 }
 
-button p:active {
-
+/* personal button style */ 
+#calc-dot button p:before {
+	content: "\2219";
 }
 
-button:active {
-  background-color: #ab5612;
+#calc-division button p:before {
+	content: "\00F7";
+	font-family: serif;
+}
+
+#calc-ac button,
+#calc-ce button {
+	background-color: #A72D45; 
 }
 
 footer {
