@@ -15,33 +15,36 @@
   <![endif]-->
 </head>
 
-<body>
+  <body onload="getLocation()">
   <div class="wrapper">
     <div class="content">
       <div class="content-header">
-        <p>Free Code Camp</p>
-        <p>Weather App</p>
+        <p>
+          We know where you live...
+        </p>
+        <p>
+          and your weather info!
+        </p>
+        <p id="not-accurate">
+          *though pardon us if sometimes it's not that accurate! It's <a href="https://developers.google.com/maps/documentation/javascript/examples/map-geolocation" target="_blank">google</a> fault!
+        </p>
+        <p id="please-accept">
+          *please accept if it asks for your location!
+        </p>
       </div>
       <div class="content-weather">
-        <div id="map">
-        </div>
         <div class="weather-info">
         </div>
         <div class="weather-symbol">
         </div>
       </div>
       <div class="content-footer">
-        <p>Inspired by <a href="#" target="_blank">mfakhrusy</a></p>
+        <p>Made by <a href="https://codepen.io/mfakhrusy" target="_blank">mfakhrusy</a>
+        </p>
       </div>
     </div>
   </div>
-
   <!-- personal javascript file -->
   <script src="js/scripts.js?v=1"></script>
-  <!-- load the google map API
-  <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBkxAJv2L4RKhPAS4AL-dW9aYcVAsVYcE&callback=initMap">
-	</script>
-	-->
 </body>
 </html>
