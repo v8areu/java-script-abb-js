@@ -25,6 +25,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
   // the user can only press math button if a valid number is already appear
   let isMathOK = false;
 
+  let isCEPossible = false;
+
+  // hack for if CE on math process
+  let isCEMathProcess = false;
+
+  // hack for if CE on number
+  let isCENumber = false;
+
   // need to save the variable before computation
   // e.g 3x5 (need to save 3 WHEN pressed x so we can just
   // compute it right away when we pressed 5)
@@ -35,6 +43,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
   // the math process on upper screen and I guess
   // we need another variable for this
   let isMathProcess = false;
+
+  // generate another hack
+  let isEqual = false;
 
   // function to capture when user click button
   // We will get the parent-id of each button
@@ -61,21 +72,35 @@ document.addEventListener("DOMContentLoaded", function(event) {
   for (let buttonNumber of buttonsNumber) {
     buttonNumber.addEventListener("click", function(e) {
 
-      //let tempButtonNumberTextNode = buttonNumber.firstElementChild.firstChild.cloneNode(true);
-      //let tempButtonNumberTextNode2 = buttonNumber.firstElementChild.firstChild.cloneNode(true);
-
       // first, make sure that the digit appear less than  digitLimit
       if (tempDigit < digitLimit) {
 
-        // remove the initial value (0) or the math process
+        // remove the initial value (0)
         if (isInitialized && this.parentNode.id !== "calc-zero") {
           screenUpper.removeChild(screenUpper.firstElementChild);
           screenLower.removeChild(screenLower.firstElementChild);
           isInitialized = false;
         }
 
+        // clear the screen after equal sign
+        if (isEqual) {
+          screenUpper.removeChild(screenUpper.firstElementChild);
+          screenLower.removeChild(screenLower.firstElementChild);
+        }
+
+        // remove math process
         if (isMathProcess) {
           screenUpper.removeChild(screenUpper.firstElementChild);
+        }
+
+        // remove 0 while isCENumber
+        if (isCENumber) {
+          screenUpper.removeChild(screenUpper.firstElementChild);
+          isCENumber = false;
+
+          if (isFirstNumber) {
+            screenLower.removeChild(screenLower.firstElementChild);
+          }
         }
 
         // we need to create the <p> tag inside the screen first
@@ -114,18 +139,24 @@ document.addEventListener("DOMContentLoaded", function(event) {
           // 2. if we just add isMathProcess, when user pressed the decimal, they can't press
           // zero after the decimal, we need that to compromise it.
           // e.g we need to write like 2x0.05 (if no isDecimal we will stuck when write 2x0. -> press zero won't have any effect)
-          if (!isInitialized && (isMathProcess || isDecimal || isMathOK)) {
+          if ((!isInitialized && (isMathProcess || isDecimal || isMathOK)) || isEqual) {
             screenUpper.firstElementChild.appendChild(buttonNumber.firstElementChild.firstChild.cloneNode(true));
             tempDigit++;
             isMathOK = true;
+            isCEPossible = true;
+    
           }
 
-          if (!isInitialized && (isMathProcess || isDecimal || isMathOK)) {
+          if ((!isInitialized && (isMathProcess || isDecimal || isMathOK)) || isEqual) {
             screenLower.firstElementChild.appendChild(buttonNumber.firstElementChild.firstChild.cloneNode(true));
 
             // the isMathProcess should be false here because if we put it above, the
             // screenLower won't print the 0
             isMathProcess = false;
+            
+            // change ifEqual to false 
+            // to make it initialized
+            isEqual = false;
           }
 
         } else {
@@ -136,7 +167,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
           tempDigit++;
           isMathOK = true;
           isMathProcess = false;
-        
+            
+          // change ifEqual to false 
+          // to make it initialized
+          isEqual = false;
+
+          isCEPossible = true;
         }
       }
     });
@@ -163,14 +199,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // if it's not, the decimal will appear (notated by dot)
     // addition: add isMathProcess because
     // we must not write 3x. -> decimal after math process
-    if (!isDecimal && !isMathProcess) {
+    // isEqual -> hack for dot is working after the equal button being pressed TODO change this to a smarter one
+    if ((!isDecimal && !isMathProcess) && !isEqual) {
       isDecimal = true;
-      let tempDotTextNode = document.createTextNode(".");
-      let tempDotTextNode2 = document.createTextNode(".");
       screenUpper
-        .firstElementChild.appendChild(tempDotTextNode);
+        .firstElementChild.appendChild(document.createTextNode("."));
       screenLower
-        .firstElementChild.appendChild(tempDotTextNode2);
+        .firstElementChild.appendChild(document.createTextNode("."));
       // the initialization should become false because
       // it's not initialized anymore
       isInitialized = false;
@@ -188,27 +223,42 @@ document.addEventListener("DOMContentLoaded", function(event) {
   for (let buttonMath of buttonsMath) {
     buttonMath.addEventListener("click", function(e) {
 
-      // get the value from upper screen
-      let tempNumValuesArray = screenUpper.firstElementChild.childNodes;
-      
-      // because the result is the p tag and its children
-      // we need to make all children to one variable
-      let tempNumValue = "";
-      for (let num of tempNumValuesArray) {
-        
-        // we should explicitly put the string
-        // for readibility
-        // so we know that all of it will be a String
-        // and will be converted to Number later
-        tempNumValue += String(num.nodeValue);
+	    let tempNumValuesArray = screenUpper.firstElementChild.childNodes;
+      let tempNumValue;
+	      
+      // need to have an if after CE button is pressed
+      // after CE is pressed, the tempNumValue should have the
+      // same value as numBeforeMath because that's
+      // the last number of computation
+      if (isCEMathProcess) {
+
+        tempNumValue = numBeforeMath;
+        // should be false again (default)
+        isCEMathProcess = false;
+
+      } else {
+	
+	      // because the result is the p tag and its children
+	      // we need to make all children to one variable
+	      tempNumValue = "";
+
+	      for (let num of tempNumValuesArray) {
+	        
+	        // we should explicitly put the string
+	        // for readibility
+	        // so we know that all of it will be a String
+	        // and will be converted to Number later
+	        // add !isNan to make sure that it's really a number
+	        tempNumValue += String(num.nodeValue);
+	      }
+	        tempNumValue = Number(tempNumValue);
       }
-      tempNumValue = Number(tempNumValue);
 
       // special case -> equal
       if (buttonMath.parentNode.id === "calc-equal") {
         let tempMath = "=";
 
-        if (isMathOK) {
+        if (isMathOK && !isMathProcess) {
 
           if (lastMathProcess === "/") {
 
@@ -246,8 +296,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
           }
 
           if (String(numBeforeMath).length > 4 && isResultDecimal) {
-            screenUpper.firstElementChild.appendChild(document.createTextNode(numBeforeMath.toFixed(3)));
-            screenLower.firstElementChild.appendChild(document.createTextNode(numBeforeMath.toFixed(3)));
+            screenUpper.firstElementChild.appendChild(document.createTextNode(numBeforeMath.toFixed(4)));
+            screenLower.firstElementChild.appendChild(document.createTextNode(numBeforeMath.toFixed(4)));
           } else {
             screenUpper.firstElementChild.appendChild(document.createTextNode(numBeforeMath));
             screenLower.firstElementChild.appendChild(document.createTextNode(numBeforeMath));
@@ -256,9 +306,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
           // isMathProcess set to true too
           // isMathProcess = true;
           
+          // set isEqual to true for hacks on the dot
+          // is still working after pressed the equal button
+          isEqual = true;
+          
           // variable re-initialization
           isDecimal = false;
-          isInitialized = true;
           isMathOK = false;
           isMathProcess = false;
           isFirstNumber = true;
@@ -273,32 +326,34 @@ document.addEventListener("DOMContentLoaded", function(event) {
         
         if (isMathOK) {
 
-          if (lastMathProcess === "x") {
-
-            numBeforeMath = numBeforeMath * tempNumValue;
-
-          }
-          else if (lastMathProcess === "/") {
-
-            numBeforeMath = numBeforeMath / tempNumValue;
-
-          } else if (lastMathProcess === "+") {
-
-            numBeforeMath = numBeforeMath + tempNumValue;
-            
-          } else if (lastMathProcess === "-") {
-
-            numBeforeMath = numBeforeMath - tempNumValue;
-
-          } else if (lastMathProcess === "=") {
-
-          } else {
-
-            // this is for the first number
-            numBeforeMath = tempNumValue;
-
-          }
-
+          if (!isMathProcess) {
+	
+	          if (lastMathProcess === "x") {
+	
+	            numBeforeMath = numBeforeMath * tempNumValue;
+	
+	          } else if (lastMathProcess === "/") {
+	
+	            numBeforeMath = numBeforeMath / tempNumValue;
+	
+	          } else if (lastMathProcess === "+") {
+	
+	            numBeforeMath = numBeforeMath + tempNumValue;
+	            
+	          } else if (lastMathProcess === "-") {
+	
+	            numBeforeMath = numBeforeMath - tempNumValue;
+	
+	          } else if (lastMathProcess === "=") {
+	
+	          } else {
+	
+	            // this is for the first number
+	            numBeforeMath = tempNumValue;
+	
+	          }
+	
+          } // isMathProcess
           // change lastMathProcess
           lastMathProcess = tempMath;
 
@@ -308,11 +363,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
           // display the cross IF the user has input any number
           screenUpper.appendChild(document.createElement("p"));
           screenUpper.firstElementChild.appendChild(document.createTextNode(tempMath));
-          screenLower.firstElementChild.appendChild(document.createTextNode(tempMath));
+
+          // if the isMathProcess is true then we will replace the old math process value
+          // since the button pressed before this is a math process
+          if (isMathProcess) {
+            screenLower.firstElementChild.removeChild(screenLower.firstElementChild.lastChild);
+            screenLower.firstElementChild.appendChild(document.createTextNode(tempMath));
+          } else {
+            screenLower.firstElementChild.appendChild(document.createTextNode(tempMath));
+          }
 
           isMathProcess = true;
           tempDigit = 0;
           isDecimal = false;
+          isFirstNumber = false;
         }
 
       } else if (buttonMath.parentNode.id === "calc-division") {
@@ -320,31 +384,34 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
         if (isMathOK) {
 
-          if (lastMathProcess === "x") {
-
-            numBeforeMath = numBeforeMath * tempNumValue;
-
-          } else if (lastMathProcess === "/") {
-            
-            numBeforeMath = numBeforeMath / tempNumValue;
-
-          } else if (lastMathProcess === "+") {
-
-            numBeforeMath = numBeforeMath + tempNumValue;
-            
-          } else if (lastMathProcess === "-") {
-
-            numBeforeMath = numBeforeMath - tempNumValue;
-
-          } else if (lastMathProcess === "=") {
-
-          } else {
-
-            // this is for the first number
-            numBeforeMath = tempNumValue;
-
-          }
-
+          if (!isMathProcess) {
+	
+	          if (lastMathProcess === "x") {
+	
+	            numBeforeMath = numBeforeMath * tempNumValue;
+	
+	          } else if (lastMathProcess === "/") {
+	            
+	            numBeforeMath = numBeforeMath / tempNumValue;
+	
+	          } else if (lastMathProcess === "+") {
+	
+	            numBeforeMath = numBeforeMath + tempNumValue;
+	            
+	          } else if (lastMathProcess === "-") {
+	
+	            numBeforeMath = numBeforeMath - tempNumValue;
+	
+	          } else if (lastMathProcess === "=") {
+	
+	          } else {
+	
+	            // this is for the first number
+	            numBeforeMath = tempNumValue;
+	
+	          }
+	
+          } // isMathProcess
           // change lastMathProcess
           lastMathProcess = tempMath;
 
@@ -354,11 +421,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
           // display the cross IF the user has input any number
           screenUpper.appendChild(document.createElement("p"));
           screenUpper.firstElementChild.appendChild(document.createTextNode(tempMath));
-          screenLower.firstElementChild.appendChild(document.createTextNode(tempMath));
+
+          if (isMathProcess) {
+            screenLower.firstElementChild.removeChild(screenLower.firstElementChild.lastChild);
+            screenLower.firstElementChild.appendChild(document.createTextNode(tempMath));
+          } else {
+            screenLower.firstElementChild.appendChild(document.createTextNode(tempMath));
+          }
 
           isMathProcess = true;
           tempDigit = 0;
           isDecimal = false;
+          isFirstNumber = false;
 
         }
 
@@ -367,31 +441,34 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
         if (isMathOK) {
 
-          if (lastMathProcess === "x") {
-
-            numBeforeMath = numBeforeMath * tempNumValue;
-
-          } else if (lastMathProcess === "/") {
-
-            numBeforeMath = numBeforeMath / tempNumValue;
-            
-          } else if (lastMathProcess === "+") {
-
-            numBeforeMath = numBeforeMath + tempNumValue;
-          
-          } else if (lastMathProcess === "-") {
-
-            numBeforeMath = numBeforeMath - tempNumValue;
-
-          } else if (lastMathProcess === "=") {
-
-          } else {
-
-            // this is for the first number
-            numBeforeMath = tempNumValue;
-
+          if (!isMathProcess) {
+	
+	          if (lastMathProcess === "x") {
+	
+	            numBeforeMath = numBeforeMath * tempNumValue;
+	
+	          } else if (lastMathProcess === "/") {
+	
+	            numBeforeMath = numBeforeMath / tempNumValue;
+	            
+	          } else if (lastMathProcess === "+") {
+	
+	            numBeforeMath = numBeforeMath + tempNumValue;
+	          
+	          } else if (lastMathProcess === "-") {
+	
+	            numBeforeMath = numBeforeMath - tempNumValue;
+	
+	          } else if (lastMathProcess === "=") {
+	
+	          } else {
+	
+	            // this is for the first number
+	            numBeforeMath = tempNumValue;
+	
+	          }
+	
           }
-
           // change lastMathProcess
           lastMathProcess = tempMath;
 
@@ -401,11 +478,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
           // display the cross IF the user has input any number
           screenUpper.appendChild(document.createElement("p"));
           screenUpper.firstElementChild.appendChild(document.createTextNode(tempMath));
-          screenLower.firstElementChild.appendChild(document.createTextNode(tempMath));
+
+          if (isMathProcess) {
+            screenLower.firstElementChild.removeChild(screenLower.firstElementChild.lastChild);
+            screenLower.firstElementChild.appendChild(document.createTextNode(tempMath));
+          } else {
+            screenLower.firstElementChild.appendChild(document.createTextNode(tempMath));
+          }
 
           isMathProcess = true;
           tempDigit = 0;
           isDecimal = false;
+          isFirstNumber = false;
 
         }
 
@@ -415,31 +499,34 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
         if (isMathOK) {
 
-          if (lastMathProcess === "x") {
-
-            numBeforeMath = numBeforeMath * tempNumValue;
-
-          } else if (lastMathProcess === "/") {
-
-            numBeforeMath = numBeforeMath / tempNumValue;
-            
-          } else if (lastMathProcess === "+") {
-
-            numBeforeMath = numBeforeMath + tempNumValue;
-
-          } else if (lastMathProcess === "-") {
-
-            numBeforeMath = numBeforeMath - tempNumValue;
-          
-          } else if (lastMathProcess === "=") {
-
-          } else {
-
-            // this is for the first number
-            numBeforeMath = tempNumValue;
-
+          if (!isMathProcess) {
+	
+	          if (lastMathProcess === "x") {
+	
+	            numBeforeMath = numBeforeMath * tempNumValue;
+	
+	          } else if (lastMathProcess === "/") {
+	
+	            numBeforeMath = numBeforeMath / tempNumValue;
+	            
+	          } else if (lastMathProcess === "+") {
+	
+	            numBeforeMath = numBeforeMath + tempNumValue;
+	
+	          } else if (lastMathProcess === "-") {
+	
+	            numBeforeMath = numBeforeMath - tempNumValue;
+	          
+	          } else if (lastMathProcess === "=") {
+	
+	          } else {
+	
+	            // this is for the first number
+	            numBeforeMath = tempNumValue;
+	
+	          }
+	
           }
-
           // change lastMathProcess
           lastMathProcess = tempMath;
 
@@ -449,11 +536,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
           // display the cross IF the user has input any number
           screenUpper.appendChild(document.createElement("p"));
           screenUpper.firstElementChild.appendChild(document.createTextNode(tempMath));
-          screenLower.firstElementChild.appendChild(document.createTextNode(tempMath));
+
+          if (isMathProcess) {
+            screenLower.firstElementChild.removeChild(screenLower.firstElementChild.lastChild);
+            screenLower.firstElementChild.appendChild(document.createTextNode(tempMath));
+          } else {
+            screenLower.firstElementChild.appendChild(document.createTextNode(tempMath));
+          }
 
           isMathProcess = true;
           tempDigit = 0;
           isDecimal = false;
+          isFirstNumber = false;
 
         }
       }
@@ -491,15 +585,128 @@ document.addEventListener("DOMContentLoaded", function(event) {
     isMathOK = false;
     isMathProcess = false;
     isFirstNumber = true;
+    isResultDecimal = false;
+    isCEPossible = false;
+    isCEMathProcess = false;
+    isCENumber = false;
+    isEqual = false;
     tempDigit = 0;
     numBeforeMath = 0;
     lastMathProcess = "";
-    isResultDecimal = false;
   });
 
   // button CE function
   let buttonCE = buttonsParentID["calc-ce"];
   buttonCE.addEventListener("click", function(e) {
+
+
+    if (isCEPossible) {
+
+      isCEPossible = false;
+	
+	    // need to differentiate between deleting a math process
+	    // and deleting a number
+	    // 1. math process -> delete the lastChild
+	    // 2. number -> delete lastChild until a nearest math process or null (null when first number)
+	    
+	    if (isEqual) {
+	    
+		    // remove the nodes inside paraghraph of screen upper 
+		    // and screen lower
+		    // we need to remove THOSE + the paraghraph tag inside
+		    let screenUpper = document.getElementById("screen-upper");
+		    let screenLower = document.getElementById("screen-lower");
+		
+		    while (screenUpper.firstChild) {
+		      screenUpper.removeChild(screenUpper.firstChild);
+		    }
+		
+		    while (screenLower.firstChild) {
+		      screenLower.removeChild(screenLower.firstChild);
+		    }
+		    
+		    //add 0
+		    screenLower.appendChild(document.createElement("p"));
+		    screenLower.firstElementChild.appendChild(document.createTextNode("0"));
+		    
+		    screenUpper.appendChild(document.createElement("p"));
+		    screenUpper.firstElementChild.appendChild(document.createTextNode("0"));
+		
+		    // variable re-initialization
+		    isDecimal = false;
+		    isInitialized = true;
+		    isMathOK = false;
+		    isMathProcess = false;
+		    isFirstNumber = true;
+		    isResultDecimal = false;
+		    isEqual = false;
+		    isCEMathProcess = false;
+	      tempDigit = 0;
+		    numBeforeMath = 0;
+		    lastMathProcess = "";
+	
+	    } else if (isMathProcess) {
+	      
+	      // delete lastChild only
+		    let screenUpper = document.getElementById("screen-upper");
+		    let screenLower = document.getElementById("screen-lower");
+	
+	      screenUpper.firstElementChild.removeChild(screenUpper.firstElementChild.lastChild);
+	      screenLower.firstElementChild.removeChild(screenLower.firstElementChild.lastChild);
+		    
+	      // get the number value of screen 
+	      // let tempNum = screenLower.firstElementChild.lastChild.nodeValue;
+	      // numBeforeMath = tempNum;
+	
+	      // add 0 to screenUpper
+		    screenUpper.appendChild(document.createElement("p"));
+		    screenUpper.firstElementChild.appendChild(document.createTextNode("0"));
+	
+	      isMathProcess = false;
+	      isMathOK = true;
+	      lastMathProcess = "";
+	      isCEMathProcess = true;
+	
+	    } else { // if number
+	
+	      // need to delete the whole child including dot for decimal
+	      let tempMath = "x/+-";
+	
+	      let screenUpper = document.getElementById("screen-upper");
+	      let screenLower = document.getElementById("screen-lower");
+	
+	      // remove the upper
+	      screenUpper.removeChild(screenUpper.firstElementChild);
+	      
+	      // add 0 to screenUpper
+		    screenUpper.appendChild(document.createElement("p"));
+		    screenUpper.firstElementChild.appendChild(document.createTextNode("0"));
+	      
+	      // add 0 to screenLower
+        if (isFirstNumber) {
+	        
+          // remove the lower
+	        screenLower.removeChild(screenLower.firstElementChild);
+		      screenLower.appendChild(document.createElement("p"));
+		      screenLower.firstElementChild.appendChild(document.createTextNode("0"));
+
+          isCENumber = true;
+
+        } else {
+
+		      // remove the lower part
+		      while (tempMath.indexOf(screenLower.firstElementChild.lastChild.nodeValue) === -1) {
+		        screenLower.firstElementChild.removeChild(screenLower.firstElementChild.lastChild);
+		      }
         
+	      
+
+        }
+	
+	      // isMathProcess = true;
+	      isMathOK = false;
+	
+	    }
+    }
   });
 });
