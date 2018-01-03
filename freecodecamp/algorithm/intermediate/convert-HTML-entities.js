@@ -1,8 +1,6 @@
 function convertHTML(str) {
   // &colon;&rpar;
   
-  let re = new RegExp(/[&><"']/, 'g');
-
   let htmlApos = "&apos;";
   let htmlQuote = "&quot;";
   let htmlAmp = "&amp;";
@@ -11,7 +9,19 @@ function convertHTML(str) {
 
   for (let ch of str) {
 
-
+    if (ch === "&") {
+      answer += htmlAmp;
+    } else if (ch === '"') {
+      answer += htmlQuote;
+    } else if (ch === "'") {
+      answer += htmlApos;
+    } else if (ch === "<") {
+      answer += htmlLessThan;
+    } else if (ch === ">") {
+      answer += htmlGreaterThan;
+    } else {
+      answer += ch;
+    }
 
   }
 
