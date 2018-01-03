@@ -1,0 +1,90 @@
+html, body
+  padding: 0
+  margin: 0
+  height: 100%
+
+.wrapper
+  height: 100%
+  width: 100%
+  background-color: #E7CFAC
+  display: flex
+  justify-content: center
+  align-items: center
+
+.wrapper-simon
+  height: 540px
+  width: 540px
+  border-radius: 50%
+  background-color: #333333
+  display: flex
+  justify-content: center
+  align-items: center
+
+.simon-frame
+  position: relative
+  width: 500px
+  height: 500px
+  border-radius: 50%
+  background-color: black
+
+.quarter-circle
+  position: absolute
+  width: 50%
+  height: 50%
+
+#simon-pattern-1
+  top: 0
+  left: 0
+  background-color: #00A74A
+  border-radius: 100% 0 0 0
+
+#simon-pattern-2
+  top: 0
+  right: 0
+  background-color: #9F0F17
+  border-radius: 0 100% 0 0
+
+#simon-pattern-3
+  bottom: 0
+  right: 0
+  background-color: #094A8F
+  border-radius: 0 0 100% 0
+
+#simon-pattern-4
+  bottom: 0
+  left: 0
+  background-color: #CCA707
+  border-radius: 0 0 0 100%
+
+.vertical-separator
+  width: 20px
+  height: 100%
+  margin: 0 auto
+  position: relative
+  background-color: #333333
+
+.horizontal-separator
+  width: 100%
+  height: 20px
+  margin-top: -10px
+  background-color: #333333
+  position: absolute
+  top: 50%
+
+.simon-control-panel
+  display: flex
+  width: 280px
+  height: 280px
+  position: absolute
+  background-color: #ffffff
+  top: 50% 
+  left: 50% 
+  border: solid 20px #333333
+  border-radius: 50%
+  // the idea below is to have a negative margin so the 
+  // control panel can center both vertically and horizontally
+  // p.s need to include all the pixel (margin, padding, border)
+  // then make it half (in this case, (280 + 2x20)/2 = 160)
+  margin: -160px 0 0 -160px
+
+.control-panel-title

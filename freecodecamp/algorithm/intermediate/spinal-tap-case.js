@@ -5,23 +5,13 @@ function spinalCase(str) {
   // first, need to check if the case is uppercase or not
   // if it's uppercase and no space before it, add space
  
-  let re = new RegExp(/[ _]/);
- 
-  let newStr = "";
-  for (let i = 0; i < str.length; i++) {
-    if (str[i] === str[i].toUpperCase() && str[i] !== " ") {
-      // let reTest = re.test(str[i - 1]);
-      // console.log(i-1, str[i-1], re.test(str[i - 1]));
-      // if (!re.test(str[i + 1])) {
-       
-      // }
-    }
+  let re = new RegExp(/([ _])/g);
+  let re2 = new RegExp(/([a-z]+)([A-Z])/g);
 
-    newStr += str[i];
-  }
-  let replace = str.replace(/[ _]/g, '($1)').toLowerCase();
+  let str2 = str.replace(re2, "$1 $2");
+  let str3 = str2.replace(re, "-").toLowerCase();
+  console.log(str3);
 
-  console.log(replace);
   return str;
 }
 
