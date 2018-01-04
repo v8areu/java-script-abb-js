@@ -75,6 +75,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
       // first, make sure that the digit appear less than  digitLimit
       if (tempDigit < digitLimit) {
 
+        let tempScreenLowerValue = "";
+
         // remove the initial value (0)
         if (isInitialized && this.parentNode.id !== "calc-zero") {
           screenUpper.removeChild(screenUpper.firstElementChild);
@@ -101,6 +103,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
           if (isFirstNumber) {
             screenLower.removeChild(screenLower.firstElementChild);
           }
+        }
+
+        // get the value of screen lower up until the latest math process (or null)
+        // if the number is pressed if isCEMathProcess is true
+        if (isCEMathProcess) {
+          for (let child of screenLower.firstElementChild.childNodes) {
+            while ("x/+-".indexOf(child.nodeValue) === -1) {
+              screenLower.firstElementChild.removeChild(screenLower.firstElementChild.lastChild);
+            }
+          } 
         }
 
         // we need to create the <p> tag inside the screen first
@@ -181,6 +193,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
   // button dot function
   let buttonDot = buttonsParentID["calc-dot"];
   buttonDot.addEventListener("click", function(e) {
+
+    isCEPossible = true;
     
     // get the value from screen upper
     let tempNumValue = screenUpper.firstElementChild;
@@ -377,6 +391,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
           tempDigit = 0;
           isDecimal = false;
           isFirstNumber = false;
+          isCEPossible = true;
         }
 
       } else if (buttonMath.parentNode.id === "calc-division") {
@@ -433,6 +448,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
           tempDigit = 0;
           isDecimal = false;
           isFirstNumber = false;
+          isCEPossible = true;
 
         }
 
@@ -490,6 +506,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
           tempDigit = 0;
           isDecimal = false;
           isFirstNumber = false;
+          isCEPossible = true;
 
         }
 
@@ -548,6 +565,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
           tempDigit = 0;
           isDecimal = false;
           isFirstNumber = false;
+          isCEPossible = true;
 
         }
       }
@@ -599,11 +617,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
   let buttonCE = buttonsParentID["calc-ce"];
   buttonCE.addEventListener("click", function(e) {
 
-
     if (isCEPossible) {
 
-      isCEPossible = false;
-	
 	    // need to differentiate between deleting a math process
 	    // and deleting a number
 	    // 1. math process -> delete the lastChild
@@ -641,6 +656,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		    isResultDecimal = false;
 		    isEqual = false;
 		    isCEMathProcess = false;
+        isCEPossible = false;
 	      tempDigit = 0;
 		    numBeforeMath = 0;
 		    lastMathProcess = "";
@@ -666,6 +682,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	      isMathOK = true;
 	      lastMathProcess = "";
 	      isCEMathProcess = true;
+        isCEPossible = false;
 	
 	    } else { // if number
 	
@@ -694,18 +711,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
         } else {
 
+          isCENumber = true;
 		      // remove the lower part
 		      while (tempMath.indexOf(screenLower.firstElementChild.lastChild.nodeValue) === -1) {
 		        screenLower.firstElementChild.removeChild(screenLower.firstElementChild.lastChild);
 		      }
-        
-	      
-
         }
 	
-	      // isMathProcess = true;
 	      isMathOK = false;
-	
+        isCEPossible = false;
+
+        if (isDecimal) {
+          isDecimal = false;
+        }
 	    }
     }
   });
