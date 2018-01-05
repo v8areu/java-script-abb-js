@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
   // ========== MISC FUNCTIONS ==========
   // ====================================
   // 1. text beep function on the screen
+
   let textBeep = function() {
     
     // define variables
@@ -23,9 +24,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
     // remove the <p> tag and add it again
     pageScreen.removeChild(pageScreen.firstElementChild);
     pageScreen.appendChild(document.createElement("p"));
-    pageScreen.firstElementChild.appendChild(document.createTextNode(textPageScreen));
-
-    console.log(textPageScreen);
+    setTimeout(function() {pageScreen.firstElementChild.appendChild(document.createTextNode(textPageScreen));}, 200);
 
   };
 
@@ -61,7 +60,6 @@ document.addEventListener("DOMContentLoaded", function(e) {
       } else { // if powerOn is false
 
         pageScreen.removeChild(pageScreen.firstElementChild);
-
         // variables initialization
         simonStart = false;
 
@@ -76,8 +74,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
         simonStart = true;
 
         // beep the screen
-        setTimeout(textBeep(), 10000);
-        
+        textBeep();
       }
     });
 });
