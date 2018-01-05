@@ -3,6 +3,10 @@ html, body
   margin: 0
   height: 100%
 
+h1, p
+  padding: 0
+  margin: 0
+
 .wrapper
   height: 100%
   width: 100%
@@ -19,6 +23,7 @@ html, body
   display: flex
   justify-content: center
   align-items: center
+  box-shadow: 1px 1px 5px 6px #000
 
 .simon-frame
   position: relative
@@ -73,10 +78,13 @@ html, body
 
 .simon-control-panel
   display: flex
+  align-items: center
+  justify-content: center
+  flex-direction: column
   width: 280px
   height: 280px
   position: absolute
-  background-color: #ffffff
+  background-color: #f4f4f4
   top: 50% 
   left: 50% 
   border: solid 20px #333333
@@ -87,4 +95,92 @@ html, body
   // then make it half (in this case, (280 + 2x20)/2 = 160)
   margin: -160px 0 0 -160px
 
+// .simon-control-panel > div
+//   border: dashed 1px cyan
+
 .control-panel-title
+  font-size: 26pt
+
+.control-panel-title > h1
+  font-family: Kalam, cursive
+
+.control-panel-main
+  width: 90%
+  display: flex
+  justify-content: space-around
+  align-items: stretch
+  text-align: center
+  height: 60px
+
+.control-panel-main > div
+  width: 70px
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  align-items: center
+  // border: 1px dotted red
+
+.control-panel-main > div > p
+  font-family: 'Nova Mono', monospace
+  font-size: 10pt
+
+.control-panel-screen
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  background-color: #32050C
+  border-radius: 10px
+  border: 4px solid black
+  height: 80%
+  width: 80%
+
+.control-panel-screen > p
+  color: red
+
+.control-panel-main button
+  height: 35px
+  width: 35px
+  border-radius: 50%
+  cursor: pointer
+
+// .control-panel-start-button
+//   border: 1px dotted red
+
+.control-panel-start-button > button
+  background-color: red
+
+// .control-panel-strict-button
+//   border: 1px dotted red
+
+.control-panel-strict-button > button
+  background-color: yellow
+
+.control-panel-switch
+  margin-top: 10px
+  display: flex
+  justify-content: center
+  width: 200px
+
+.control-panel-switch p
+  font-family: 'Nova Mono', monospace
+
+.control-panel-switch #on-off-button
+  width: 50px
+  margin-left: 10px
+  margin-right: 10px
+  background-color: #222222
+  cursor: pointer
+
+.control-panel-switch #on-off-switch
+  background-color: blue
+  height: 100%
+  width: 50%
+
+.switch-flex-row
+  display: flex
+  flex-direction: row
+
+.switch-flex-row-reverse
+  display: flex
+  flex-direction: row-reverse

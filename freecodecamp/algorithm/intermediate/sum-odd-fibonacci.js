@@ -1,18 +1,29 @@
 function sumFibs(num) {
 
-  let fiboSeq = [1];
+  let fiboSeq = [0, 1];
+  let tempNum = 1;
+  let sum = 0;
+  let i = 2;
 
-  let base = 0;
-  let base2 = 1;
-  while (num > 0) {
-  
-    fiboSeq.push(base + base2);
-    base = base2;
+  while (tempNum < num) {
 
-    num--;
+    tempNum = fiboSeq[i - 2] + fiboSeq[i - 1];
+    if (tempNum <= num) {
+      fiboSeq.push(tempNum);
+    }
+    i++;
+
   }
 
-  return total;
+  // sum all the odd value
+  for (let fiboNum of fiboSeq) {
+    if (fiboNum % 2 !== 0) {
+      sum += fiboNum;
+    }
+  }
+
+  console.log(sum);
+  return sum;
 }
 
-sumFibs(4);
+sumFibs(75025);

@@ -99,18 +99,10 @@ html, body {
   display: flex;
 }
 
-#calculator-keyboard > div {
-  /*border: 1px dashed red; */
-}
-
 #left-side {
   display: flex;
   width: 75%;
   flex-direction: column;
-}
-
-#left-side > div {
-  /*border: 1px dotted purple;*/
 }
 
 #left-upper-side {
@@ -125,7 +117,6 @@ html, body {
 .button-container-upper-left {
   height: 25%;
   width: 32%;
-  /*border: 0.1px dashed orange;*/
 }
 
 #left-lower-side {
@@ -136,7 +127,6 @@ html, body {
 
 .button-container-lower-left {
   width: 32%;
-  /*border: 0.1px dashed blue;*/
 }
 
 #calc-zero {
@@ -159,14 +149,13 @@ html, body {
 }
 
 .button-container-right {
-
   height: 19%;
-  /*border: 1px solid green;*/
-
 }
 
 #calc-equal {
   height: 40%;
+  display: flex;
+  justify-content: center;
 }
 
 button:focus {
@@ -201,12 +190,7 @@ button:focus {
 #calc-dot button p:before {
 	content: "\2219";
 }
-/*
-#calc-division button p:before {
-	content: "\00F7";
-	font-family: serif;
-}
-*/
+
 #calc-ac button,
 #calc-ce button {
 	background-color: #A72D45; 

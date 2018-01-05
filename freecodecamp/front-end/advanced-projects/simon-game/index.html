@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Kalam|Nova+Mono" rel="stylesheet">
   <title></title>
 </head>
 <body>
@@ -17,21 +18,34 @@
         <div class="horizontal-separator"></div>
         <div class="simon-control-panel">
           <div class="control-panel-title">
-            Simon
+            <h1>Simon</h1>
           </div>
           <div class="control-panel-main">
-            <div class="control-panel-screen">
+            <div class="control-panel-screen-wrapper">
+              <div class="control-panel-screen">
+              </div>
+              <p>COUNT</p>
             </div>
             <div class="control-panel-start-button">
+              <button id="start-button"></button>
+              <p>START</p>
             </div>
             <div class="control-panel-strict-button">
+              <button id="strict-button"></button>
+              <p>STRICT</p>
             </div>
           </div>
           <div class="control-panel-switch">
+            <p>off</p>
+            <div id="on-off-button" class="switch-flex-row">
+              <div id="on-off-switch"></div>
+            </div>
+            <p>on</p>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <script src="js/scripts.js"></script>
 </body>
 </html>
