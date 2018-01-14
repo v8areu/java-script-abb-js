@@ -75,6 +75,10 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
         // beep the screen
         textBeep();
+
+        setInterval(function() {console.log("a");}, 1000);
+        console.log("adadad");
+
       }
     });
 });
