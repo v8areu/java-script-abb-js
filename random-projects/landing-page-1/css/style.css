@@ -1,0 +1,63 @@
+:root {
+  font-size: 62.5%; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%; }
+
+body {
+  font-size: 1.6rem; }
+
+.wrapper {
+  margin: 0;
+  padding: 0;
+  height: 100%; }
+
+h1, p {
+  margin: 0;
+  padding: 0; }
+
+header {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: url("../img/scott-webb-12981.jpg");
+  background-size: cover; }
+
+.header-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-family: "Share Tech Mono", monospace; }
+
+.header-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  .header-description h1 {
+    margin-bottom: 0.5rem;
+    font-size: 4rem; }
+  .header-description p {
+    font-size: 2rem; }
+
+.header-extension {
+  margin-top: 5rem; }
+  .header-extension .header-button {
+    width: 10rem;
+    height: 4rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    border-radius: 1rem;
+    background-color: red;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+
+/*# sourceMappingURL=style.css.map */

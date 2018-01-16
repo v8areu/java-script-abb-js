@@ -1,0 +1,46 @@
+header {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: url("../img/scott-webb-12981.jpg");
+  background-size: cover;
+}
+
+.header-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-family: $header-font;
+}
+
+.header-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+	h1 {
+		margin-bottom: 0.5rem;
+		font-size: 4rem;
+	}
+
+	p {
+		font-size: 2rem;
+	}
+}
+
+.header-extension {
+  margin-top: 5rem;
+	.header-button {
+	  width: 10rem;
+	  height: 4rem;
+	  @include border-radius(1rem);
+	  background-color: red;
+	  cursor: pointer;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
