@@ -1,0 +1,33 @@
+.callout {
+	background: url("../img/callout-bg.jpg") center no-repeat;
+	background-size: cover;
+	height: 100vh;
+	font-family: $primary-font;
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.callout-inner {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.callout-description {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.callout-extension {
+	margin-top: 5rem;
+}
+
+.callout-button {
+	width: 15rem;
+}

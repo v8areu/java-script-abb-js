@@ -15,15 +15,74 @@ body {
   padding: 0;
   height: 100%; }
 
-h1, p {
+h1, h2, h3, p {
   margin: 0;
   padding: 0; }
+
+.button {
+  height: 4rem;
+  width: 10rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 1px 1px 1px 1px #111111;
+  background-color: #7fdbff;
+  color: #111111;
+  -webkit-border-radius: 0.8rem;
+  -moz-border-radius: 0.8rem;
+  -ms-border-radius: 0.8rem;
+  -o-border-radius: 0.8rem;
+  border-radius: 0.8rem;
+  -webkit-transition: 0.25s ease-in-out;
+  -moz-transition: 0.25s ease-in-out;
+  -ms-transition: 0.25s ease-in-out;
+  -o-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out; }
+  .button:hover {
+    -webkit-transition: 0.25s ease-in-out;
+    -moz-transition: 0.25s ease-in-out;
+    -ms-transition: 0.25s ease-in-out;
+    -o-transition: 0.25s ease-in-out;
+    transition: 0.25s ease-in-out;
+    background-color: #39cccc;
+    color: #ffffff; }
+
+.menu {
+  position: fixed;
+  right: 1.5rem;
+  top: 1.5rem;
+  width: 5rem;
+  height: 5rem;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 0.7rem;
+  color: #ffffff;
+  background: rgba(84, 84, 84, 0.5);
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+  text-decoration: none; }
+  .menu:hover {
+    background: rgba(84, 84, 84, 0.95);
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s; }
+  .menu i {
+    vertical-align: middle;
+    line-height: 5rem;
+    margin-left: auto;
+    margin-right: auto; }
 
 header {
   margin: 0;
   padding: 0;
   height: 100%;
-  background: url("../img/scott-webb-12981.jpg");
+  background: url("../img/header-bg.jpg") center no-repeat;
   background-size: cover; }
 
 .header-main {
@@ -31,14 +90,15 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 100vh;
   font-family: "Share Tech Mono", monospace; }
 
 .header-description {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  text-align: center; }
   .header-description h1 {
     margin-bottom: 0.5rem;
     font-size: 4rem; }
@@ -50,19 +110,149 @@ header {
 
 .header-button {
   background-color: #7fdbff;
-  color: #111111;
-  width: 10rem;
-  height: 4rem;
-  -webkit-border-radius: 0.5rem;
-  -moz-border-radius: 0.5rem;
-  -ms-border-radius: 0.5rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center; }
+  color: #111111; }
   .header-button:hover {
     background-color: #39cccc;
     color: #ffffff; }
+
+.about-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 7.5rem;
+  padding-bottom: 7.5rem;
+  font-family: "Merriweather Sans", "Sans Serif";
+  background: rgba(158, 251, 255, 0.5); }
+
+.about-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.about-description {
+  text-align: center; }
+
+.about-extension {
+  margin-top: 5rem; }
+
+.about-button {
+  background-color: #7fdbff; }
+  .about-button:hover {
+    background-color: #39cccc;
+    color: #ffffff; }
+
+.services-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5rem;
+  padding-bottom: 5rem; }
+
+.services-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.services-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; }
+  .services-items .item {
+    margin: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+  .services-items .service-logo {
+    height: 15rem;
+    width: 15rem;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    background-color: #7fdbff;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+  .services-items .service-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center; }
+
+.callout {
+  background: url("../img/callout-bg.jpg") center no-repeat;
+  background-size: cover;
+  height: 100vh;
+  font-family: "Merriweather Sans", "Sans Serif";
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.callout-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.callout-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center; }
+
+.callout-extension {
+  margin-top: 5rem; }
+
+.callout-button {
+  width: 15rem; }
+
+.projects,
+.projects-inner,
+.projects-title,
+.projects-items {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.projects {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  font-family: "Merriweather Sans", "Sans Serif";
+  padding-left: 4.5rem;
+  padding-right: 4.5rem; }
+
+.projects-inner, .projects-title {
+  flex-direction: column; }
+
+.projects-items {
+  padding-top: 5rem;
+  flex-wrap: wrap; }
+  .projects-items .item {
+    width: 50rem;
+    height: 37rem;
+    background-color: yellow; }
+  .projects-items #item-1 {
+    background: url(../img/project-1.jpg) no-repeat center;
+    background-size: cover; }
+    .projects-items #item-1:hover {
+      background: linear-gradient(rgba(127, 219, 255, 0.5) 100%, rgba(127, 219, 255, 0.5) 100%), url(../img/project-1.jpg) no-repeat center;
+      background-size: cover; }
+  .projects-items #item-2 {
+    background: url(../img/project-2.jpg) no-repeat center;
+    background-size: cover; }
+  .projects-items #item-3 {
+    background: url(../img/project-3.jpg) no-repeat center;
+    background-size: cover; }
+  .projects-items #item-4 {
+    background: url(../img/project-4.jpg) no-repeat center;
+    background-size: cover; }
 
 /*# sourceMappingURL=style.css.map */

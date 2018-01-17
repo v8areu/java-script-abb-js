@@ -15,7 +15,32 @@ body {
   height: 100%;
 }
 
-h1, p {
+h1, h2, h3, p {
   margin: 0;
   padding: 0;
+}
+
+// button
+.button {
+	height: 4rem;
+	width: 10rem;
+	cursor: pointer;
+
+	display: flex;
+	justify-content: center;	
+	align-items: center;
+	box-shadow: 1px 1px 1px 1px $black1;
+	background-color: $primary;
+  color: $black1;
+
+	@include border-radius(0.8rem);
+	@include transition(0.25s ease-in-out);
+	// @include box-shadow(0 0.8rem 0 $dimgray, 0 1.5rem 2rem rgba(0, 0, 0, 0.35));
+
+	&:hover {
+		@include transition(0.25s ease-in-out);
+    background-color: $secondary;
+    color: $white;
+	}
+
 }

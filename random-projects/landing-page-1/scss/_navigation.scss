@@ -1,0 +1,27 @@
+.menu {
+	position: fixed;
+	right: 1.5rem;
+	top: 1.5rem;
+	width: 5rem;
+	height: 5rem;
+	display: inline-flex;
+	align-items: center;
+	border-radius: 0.7rem;
+
+	color: $white;
+	background: fade-out($darkgray, 0.5);
+	@include transition(0.5s);
+	text-decoration: none;
+
+	&:hover {
+		background: fade-out($darkgray, 0.05);
+		@include transition(0.5s);
+	}
+
+	i {
+		vertical-align: middle;
+		line-height: 5rem;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}

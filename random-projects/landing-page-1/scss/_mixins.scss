@@ -2,5 +2,22 @@
   -webkit-border-radius: $radius;
      -moz-border-radius: $radius;
       -ms-border-radius: $radius;
+			 -o-border-radius: $radius;
           border-radius: $radius;
+}
+
+@mixin transition($transition-type) {
+	-webkit-transition: $transition-type;
+	   -moz-transition: $transition-type;
+		  -ms-transition: $transition-type;
+			 -o-transition: $transition-type;
+			    transition: $transition-type;
+}
+
+@mixin box-shadow($shadow-type...) {
+	-webkit-box-shadow: $shadow-type;
+	   -moz-box-shadow: $shadow-type;
+		  -ms-box-shadow: $shadow-type;
+			 -o-box-shadow: $shadow-type;
+			    box-shadow: $shadow-type;
 }

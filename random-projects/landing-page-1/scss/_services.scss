@@ -1,0 +1,54 @@
+.services-section {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-top: 5rem;
+	padding-bottom: 5rem;
+}
+
+.services-inner {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.services-title {
+	
+}
+
+.services-items {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+
+	.item {
+		margin: 3rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.service-logo {
+		height: 15rem;
+		width: 15rem;
+		@include border-radius(50%);
+		background-color: $primary;
+		margin-bottom: 2rem;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+	}
+
+	.service-description {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+		align-items: center;
+	}
+}
