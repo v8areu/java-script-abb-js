@@ -1,0 +1,68 @@
+html, body {
+  padding: 0;
+  margin: 0;
+  height: 100%; }
+
+.wrapper {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3FAF82;
+  background-image: linear-gradient(to bottom right, #3FAF82, #80D11B); }
+  .wrapper .wrapper-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    border: 1px dashed pink; }
+    .wrapper .wrapper-inner .box {
+      height: 300px;
+      width: 300px;
+      border: 1px dashed cyan;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; }
+      .wrapper .wrapper-inner .box .horizontal-bar {
+        width: 70px;
+        height: 6px;
+        background-color: white;
+        border-radius: 3px;
+        margin: 6px;
+        transition: 0.7s; }
+      .wrapper .wrapper-inner .box .horizontal-bar-top {
+        transform: rotate(-225deg);
+        transition: 0.7s;
+        margin: 0 0 -3px 0;
+        padding: 0;
+        width: 80px; }
+      .wrapper .wrapper-inner .box .horizontal-bar-bottom {
+        transform: rotate(225deg);
+        transition: 0.7s;
+        margin: -3px 0 0 0;
+        padding: 0;
+        width: 80px; }
+      .wrapper .wrapper-inner .box .horizontal-bar-gone {
+        display: none;
+        transition: 0.7s; }
+    .wrapper .wrapper-inner .box-footer {
+      width: 300px;
+      height: 80px;
+      border: 1px dotted #abcabc;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      .wrapper .wrapper-inner .box-footer button {
+        height: 30px;
+        width: 100px;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center; }
+        .wrapper .wrapper-inner .box-footer button span {
+          font-family: monospace; }
+
+/*# sourceMappingURL=style.css.map */

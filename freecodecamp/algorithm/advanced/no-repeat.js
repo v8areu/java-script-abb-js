@@ -7,24 +7,22 @@ function permAlone(str) {
   const strArray = str.split('');
 
   // recursive function
-  let permRecursive = function(strArray, strDeep, countPerm) {
+  let permRecursive = function(strArray, strDeep, countPerm, recursiveArray) {
     
     if (strDeep === str.length - 1) {
       return countPerm;
     } else {
-      strArray.forEach()
+      strArray.forEach((char, charIndex) => {
+        const tempRec = permRecursive(strArray, charIndex, countPerm);
+        recursiveArray.push(tempRec);
+      });
     }
 
   };
 
-
   // console.log(permRecursive(str, 0, 0));
-
 
   return str;
 }
 
 permAlone('aab');
-
-
-

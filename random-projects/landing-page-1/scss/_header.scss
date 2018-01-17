@@ -33,14 +33,21 @@ header {
 
 .header-extension {
   margin-top: 5rem;
-	.header-button {
-	  width: 10rem;
-	  height: 4rem;
-	  @include border-radius(1rem);
-	  background-color: red;
-	  cursor: pointer;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
+}
+
+.header-button {
+	background-color: $primary;
+  color: $black1;
+	width: 10rem;
+	height: 4rem;
+	@include border-radius(0.5rem);
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+  &:hover {
+    background-color: $secondary;
+    color: $white;
+  }
 }

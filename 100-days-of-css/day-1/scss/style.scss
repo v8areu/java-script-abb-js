@@ -1,0 +1,96 @@
+$shadow-color: #545454;
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.wrapper {
+  height: 100%;
+  background-color: blue;
+  background-image: linear-gradient(
+    to top right, #43389F 0%, #4EC6CA 100%
+  );
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .inner-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 400px;
+    width: 400px;
+    border: 1px dashed pink;
+
+    #text-hundred {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      .one-one {
+        width: 30px;
+        height: 60px;
+        background-color: white;
+        box-shadow: 1px 1px 4px 1px $shadow-color;
+        transform: rotate(55deg);
+        z-index: 1;
+      } 
+
+      .one-two {
+        width: 30px;
+        height: 120px;
+        background-color: white;
+        box-shadow: 1px 1px 4px 1px $shadow-color;
+        z-index: 4;
+      }
+
+      .zero-one {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 30px solid white;
+        box-shadow: 1px 1px 4px 1px $shadow-color, inset 1px 1px 4px 1px $shadow-color;
+        z-index: 3;
+        margin-left: -10px;
+      }
+
+      .zero-two {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 30px solid white;
+        box-shadow: 1px 1px 4px 1px $shadow-color, inset 1px 1px 4px 1px $shadow-color;
+        z-index: 2;
+        margin-left: -15px;
+
+      }
+    }
+    
+    #text-days {
+      display: flex;
+      justify-content: center;
+
+      span {
+        color: white;
+        font-family: "Open Sans", sans-serif;
+        font-size: 80pt;
+
+      }
+    }
+
+    #text-challenge {
+      display: flex;
+      justify-content: center;
+
+      span {
+        color: white;
+        font-family: "Open Sans", sans-serif;
+        font-size: 27pt;
+
+      }
+    }
+  }
+} 

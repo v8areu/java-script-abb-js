@@ -47,17 +47,22 @@ header {
 
 .header-extension {
   margin-top: 5rem; }
-  .header-extension .header-button {
-    width: 10rem;
-    height: 4rem;
-    -webkit-border-radius: 1rem;
-    -moz-border-radius: 1rem;
-    -ms-border-radius: 1rem;
-    border-radius: 1rem;
-    background-color: red;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center; }
+
+.header-button {
+  background-color: #7fdbff;
+  color: #111111;
+  width: 10rem;
+  height: 4rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .header-button:hover {
+    background-color: #39cccc;
+    color: #ffffff; }
 
 /*# sourceMappingURL=style.css.map */
