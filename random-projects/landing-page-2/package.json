@@ -1,0 +1,36 @@
+{
+  "name": "app-landing-page-awesome",
+  "version": "1.0.0",
+  "description": "Your Responsive Landing Page for Mobile Application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mfakhrusy/web-things-awesome.git"
+  },
+  "keywords": [
+    "mobile",
+    "landing",
+    "page",
+    "responsive"
+  ],
+  "author": "mfakhrusy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mfakhrusy/web-things-awesome/issues"
+  },
+  "homepage": "https://github.com/mfakhrusy/web-things-awesome#readme",
+  "dependencies": {
+    "html5-device-mockups": "^3.2.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.23.5",
+    "gulp": "^3.9.1",
+    "gulp-if": "^2.0.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0",
+    "gulp-useref": "^3.1.4"
+  }
+}

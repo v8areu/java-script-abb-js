@@ -1,0 +1,11 @@
+#page-header, .header-wrapper {
+	height: 100%;
+}
+
+.header-wrapper {
+	background: url("../img/header-bg.jpg") center no-repeat;
+	background-size: cover;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

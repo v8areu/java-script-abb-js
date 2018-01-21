@@ -22,38 +22,62 @@
 .projects-items {
 	padding-top: 5rem;
 	flex-wrap: wrap;
+}
+
+.item-wrapper {
+	width: 50rem;
+	height: 37rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	position: relative;
+	
+	.item,
+	.item-background {
+		width: 100%;
+		height: 100%;
+		@include transition(0.1s ease-in-out);
+
+		&:hover {
+			@include transition(0.1s ease-in-out);
+		}
+	}
 
 	.item {
-		width: 50rem;
-		height: 37rem;
-		background-color: yellow;
+		z-index: 9;
+	
+		&:hover {
+			transform: scale(0.9);
+			opacity: 0.3;
+		}
+	}
 
+	.item-background {
+		transform: scale(0.9);
+		opacity: 1;
+		background-color: $primary;
+		position: absolute;
 	}
 
 	#item-1 {
 		background: url(../img/project-1.jpg) no-repeat center;
 		background-size: cover;
-
-		&:hover {
-			background: linear-gradient(rgba($aqua, 0.5)100%, rgba($aqua, 0.5)100%), url(../img/project-1.jpg) no-repeat center;
-			background-size: cover;
-		}
-
 	}
-
+	
 	#item-2 {
 		background: url(../img/project-2.jpg) no-repeat center;
 		background-size: cover;
 	}
-
+	
 	#item-3 {
 		background: url(../img/project-3.jpg) no-repeat center;
 		background-size: cover;
 	}
-
+	
 	#item-4 {
 		background: url(../img/project-4.jpg) no-repeat center;
 		background-size: cover;
-
+	
 	}
 }

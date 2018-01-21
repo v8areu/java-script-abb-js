@@ -1,0 +1,16 @@
+{
+  "libs": [
+    "browser",
+    "gulp",
+	"gulpjs"
+  ],
+  "loadEagerly": [
+    "importantfile.js"
+  ],
+  "plugins": {
+    "requirejs": {
+      "baseURL": "./",
+      "paths": {}
+    }
+  }
+}

@@ -1,0 +1,17 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+p,
+h1 {
+	margin: 0;
+	padding: 0;
+}
+
+// BUTTON STYLING
+.button {
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+}

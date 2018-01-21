@@ -1,0 +1,23 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; }
+
+p,
+h1 {
+  margin: 0;
+  padding: 0; }
+
+.button {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent; }
+
+#page-header, .header-wrapper {
+  height: 100%; }
+
+.header-wrapper {
+  background: url("../img/header-bg.jpg") center no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center; }

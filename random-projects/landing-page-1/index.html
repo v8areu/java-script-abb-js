@@ -4,18 +4,53 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
   <title></title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=4">
   <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono|Merriweather+Sans:400,700,800" rel="stylesheet">
 	<link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css" integrity="sha384-dNpIIXE8U05kAbPhy3G1cz+yZmTzA6CY8Vg/u2L9xRnHjJiAK76m2BIEaSEV+/aU" crossorigin="anonymous">
 
 </head>
-<body>
+<body id="page-top">
 
   <div class="wrapper">
     <!-- Navigation Bar -->
-		<a href="#" class="menu">
+		<a class="menu" id="menu-toggle">
 			<i class="fa fa-bars fa-2x"></i>
 		</a>
+		<nav class="sidebar-wrapper">
+				<ul class="sidebar-ul">
+					<li class="sidebar-title">
+						<a href="#">
+							Stylish Theme
+						</a>
+					</li>
+					<li class="sidebar-item">
+						<a href="#">
+							<i class="fa fa-home"> Home</i>
+						</a>
+					</li>
+					<li class="sidebar-item">
+						<a href="#">
+							<i class="fa fa-heart"> About</i>
+						</a>
+					</li>
+					<li class="sidebar-item">
+						<a href="#">
+							<i class="fa fa-laptop"> Services</i>
+						</a>
+					</li>
+					<li class="sidebar-item">
+						<a href="#">
+							<i class="fa fa-users"> Portfolio</i>
+						</a>
+					</li>
+					<li class="sidebar-item">
+						<a href="#">
+							<i class="fa fa-address-card-o"> Contact</i>
+						</a>
+					</li>
+				</ul>
+				
+		</nav>
 
     <!-- Header -->
     <header>
@@ -114,10 +149,22 @@
 					<h1>Recent Projects</h1>
 				</div>
 				<div class="projects-items">
-					<div id="item-1" class="item"></div>
-					<div id="item-2" class="item"></div>
-					<div id="item-3" class="item"></div>
-					<div id="item-4" class="item"></div>
+					<div class="item-wrapper">
+						<div id="item-1" class="item"></div>
+						<div class="item-background"></div>
+					</div>
+					<div class="item-wrapper">
+						<div id="item-2" class="item"></div>
+						<div class="item-background"></div>
+					</div>
+					<div class="item-wrapper">
+						<div id="item-3" class="item"></div>
+						<div class="item-background"></div>
+					</div>
+					<div class="item-wrapper">
+						<div id="item-4" class="item"></div>
+						<div class="item-background"></div>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -125,6 +172,31 @@
 		<!-- Map -->
 
 		<!-- Footer -->
+		<footer>
+			<div class="footer-inner">
+				<div class="footer-social">
+					<a href="#">
+						<div class="footer-fb">
+							<i class="fa fa-facebook fa-3x"></i>
+						</div>
+					</a>
+					<a href="#">
+						<div class="footer-fb">
+							<i class="fa fa-twitter fa-3x"></i>
+						</div>
+					</a>
+					<a href="#">
+						<div class="footer-fb">
+							<i class="fa fa-instagram fa-3x"></i>
+						</div>
+					</a>
+				</div>
+				<div class="footer-copyright">
+					<p>Copyright <a href="https://mfakhrusy.github.io">mfakhrusy</a> 2018</p>
+				</div>
+			</div>
+		</footer>
   </div>
+	<script src="js/script.js"></script>
 </body>
 </html>
