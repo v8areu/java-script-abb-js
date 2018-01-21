@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-.sass-cache
-node_modules
-=======
-.swp
 .sass-cache/
->>>>>>> 4dba77f5d0dad87fb5970b2a8dd5658d31e17202
+node_modules
+.swp
