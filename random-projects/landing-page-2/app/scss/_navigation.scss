@@ -6,6 +6,7 @@ nav#page-nav {
   align-items: center;
   width: 100%;
   height: 5rem;
+  z-index: 999;
 
   @media screen and (max-width: $width-minimum-pc) {
     background-color: #fff;

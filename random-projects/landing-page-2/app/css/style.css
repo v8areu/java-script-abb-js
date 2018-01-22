@@ -48,7 +48,8 @@ nav#page-nav {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 5rem; }
+  height: 5rem;
+  z-index: 999; }
   @media screen and (max-width: 992px) {
     nav#page-nav {
       background-color: #fff; } }
@@ -163,3 +164,13 @@ ul.navbar-ul {
   background-size: cover; }
   .device-inner-screen h3 {
     margin-top: 10rem; }
+
+section#page-download {
+  width: 100%;
+  height: 50rem;
+  background-color: #0a2377;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-family: "Electrolize", sans-serif; }
