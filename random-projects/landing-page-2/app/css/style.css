@@ -1,23 +1,165 @@
+:root {
+  font-size: 62.5%; }
+
 html, body {
   margin: 0;
   padding: 0;
   height: 100%; }
 
+body {
+  font-size: 1.6rem; }
+
 p,
-h1 {
+h1,
+h3 {
   margin: 0;
   padding: 0; }
 
-.button {
+.costum-button {
   cursor: pointer;
-  -webkit-tap-highlight-color: transparent; }
+  background-color: transparent;
+  border: #000000 solid 0.1rem;
+  width: 15rem;
+  height: 3rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1.5rem;
+  -webkit-transition: 0.3s ease-out;
+  -moz-transition: 0.3s ease-out;
+  -o-transition: 0.3s ease-out;
+  transition: 0.3s ease-out; }
+  .costum-button:hover {
+    background-color: #0a2377;
+    color: #fff;
+    -webkit-transition: 0.3s ease-out;
+    -moz-transition: 0.3s ease-out;
+    -o-transition: 0.3s ease-out;
+    transition: 0.3s ease-out; }
+
+a.costum-button {
+  text-decoration: none;
+  color: #000; }
+
+nav#page-nav {
+  position: fixed;
+  font-family: "Electrolize", sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 5rem; }
+  @media screen and (max-width: 992px) {
+    nav#page-nav {
+      background-color: #fff; } }
+
+.navbar-head {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .navbar-head h3 {
+    margin-left: 10rem; }
+    @media screen and (max-width: 992px) {
+      .navbar-head h3 {
+        margin-left: 2rem;
+        font-size: 80%; } }
+
+ul.navbar-ul {
+  margin: 0 10rem 0 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; }
+  ul.navbar-ul .navbar-item {
+    display: inline-flex;
+    padding-left: 2rem;
+    padding-right: 2rem; }
+    ul.navbar-ul .navbar-item a {
+      text-decoration: none;
+      color: #000;
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      -webkit-transition: 0.2s ease;
+      -moz-transition: 0.2s ease;
+      -o-transition: 0.2s ease;
+      transition: 0.2s ease; }
+      ul.navbar-ul .navbar-item a:hover {
+        color: #0a2377;
+        -webkit-transition: 0.2s ease;
+        -moz-transition: 0.2s ease;
+        -o-transition: 0.2s ease;
+        transition: 0.2s ease; }
+  @media screen and (max-width: 992px) {
+    ul.navbar-ul {
+      margin: 0 2rem 0 0;
+      font-size: 80%; } }
 
 #page-header, .header-wrapper {
   height: 100%; }
 
 .header-wrapper {
-  background: url("../img/header-bg.jpg") center no-repeat;
+  background: url(../img/header-bg2.jpg) center no-repeat;
   background-size: cover;
   display: flex;
   justify-content: center;
+  align-items: center;
+  font-family: "Electrolize", sans-serif; }
+  @media screen and (max-width: 992px) {
+    .header-wrapper {
+      padding-top: 5rem; } }
+
+.header-inner-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%; }
+  .header-inner-wrapper > div {
+    width: 45rem; }
+  @media screen and (max-width: 992px) {
+    .header-inner-wrapper {
+      flex-direction: column;
+      flex-wrap: nowrap; } }
+
+.header-description {
+  height: 20rem; }
+  @media screen and (max-width: 992px) {
+    .header-description {
+      height: 15rem;
+      margin-top: 1rem;
+      margin-bottom: 5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center; } }
+
+.header-description-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3rem; }
+  @media screen and (max-width: 992px) {
+    .header-description-text {
+      font-size: 80%;
+      margin-bottom: 3rem;
+      margin-top: 1rem; } }
+
+.header-mockup {
+  display: flex;
+  justify-content: center;
   align-items: center; }
+
+.device-inner-screen {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: url(../img/mockup-img.jpg) center no-repeat;
+  background-size: cover; }
+  .device-inner-screen h3 {
+    margin-top: 10rem; }
