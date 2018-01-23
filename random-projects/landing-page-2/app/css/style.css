@@ -11,6 +11,7 @@ body {
 
 p,
 h1,
+h2,
 h3 {
   margin: 0;
   padding: 0; }
@@ -49,10 +50,23 @@ nav#page-nav {
   align-items: center;
   width: 100%;
   height: 5rem;
-  z-index: 999; }
+  z-index: 999;
+  -webkit-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
+  transition: 0.5s ease; }
   @media screen and (max-width: 992px) {
     nav#page-nav {
       background-color: #fff; } }
+
+.navbar-colored {
+  background-color: #0a2377;
+  opacity: 0.95;
+  color: #ffffff;
+  -webkit-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
+  transition: 0.5s ease; }
 
 .navbar-head {
   height: 100%;
@@ -174,3 +188,67 @@ section#page-download {
   align-items: center;
   color: #fff;
   font-family: "Electrolize", sans-serif; }
+
+.download-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center; }
+
+.download-buttons {
+  margin-top: 3rem; }
+
+.download-button-android img {
+  width: 50rem;
+  height: auto; }
+  @media screen and (max-width: 992px) {
+    .download-button-android img {
+      width: 35rem; } }
+
+section#page-features {
+  width: 100%;
+  height: 100rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff; }
+
+.features-inner {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  font-family: "Electrolize", sans-serif; }
+
+.features-header {
+  padding: 10rem 0;
+  text-align: center;
+  width: 100%; }
+
+.features-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 60rem;
+  margin-left: 5rem; }
+  .features-content > div {
+    display: flex;
+    flex-wrap: wrap; }
+    .features-content > div > div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 2rem; }
+
+.fa-8x {
+  font-size: 800%; }
+
+.fa-10x {
+  font-size: 1000%; }
+
+.fa-blue {
+  color: #0a2377; }

@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script src="https://use.fontawesome.com/af55e67e53.js"></script>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="https://use.fontawesome.com/af55e67e53.js"></script>
   <link rel="stylesheet" href="css/device-mockups.css" type="text/css">  
   <link rel="stylesheet" href="css/style.css" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Electrolize" rel="stylesheet">
-
+  
   <title>App Landing Page</title>
 </head>
 <body>
@@ -44,13 +46,13 @@
 				</div>
 				<div class="header-mockup">
 					<div class="device-wrapper">
-						<div class="device" data-device="iPhone7" data-orientation="portrait" data-color="gold">
+						<div id="page-device-top" class="device" data-device="iPhone7" data-orientation="portrait" data-color="gold">
 							<div class="screen">
                 <div class="device-inner-screen">
                   <h3>Your App Goes Here</h3>
                 </div>
               </div>
-              <div class="button">
+              <div class="button" id="mockup-button">
               </div>
 						</div>
 					</div>
@@ -60,23 +62,86 @@
 	</header>
   <!-- Download -->
   <section id="page-download">
-    <div class="download-inner">
+    <div class="download-inner">      
       <div class="download-description">
         <h2>Discover what all the buzz is about!</h2>
         <p>Our App is Available on Android and Apple mobile devices! Download now!</p>
       </div>
       <div class="download-buttons">
-        <div class="download-buttons-android">
-
+        <div class="download-button-android">
+          <a href='http://play.google.com/store/?pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
+            <img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/>
+          </a>
         </div>
-        <div class="download-buttons-apple">
-
-        </div>  
+        <div class="download-button-apple">
+          <!-- the heck ios need to download a freaking > 40MB file to just doing this, skipping this for a while -->
+        </div>        
       </div>
     </div>
   </section>
-	<!-- Features -->
+  <!-- Features -->
+  <section id="page-features">
+    
+    <div class="features-inner">
+      <div class="features-header">
+        <h1>Unlimited Features, Unlimited Fun</h1>
+        <p>Check out our features!</p>  
+      </div>
+      <div class="device-wrapper">
+        <div id="page-device-top" class="device" data-device="iPhone7" data-orientation="portrait" data-color="black">
+          <div class="screen">
+            <div class="device-inner-screen">
+              <h3>Your App Goes Here</h3>
+            </div>
+          </div>
+          <div class="button" id="mockup-button">
+          </div>
+        </div>
+      </div>
+      <div class="features-content">
+        <div class="features-content-top">
+          <div class="feature-mockup">
+            <div class="feature-logo">
+              <i class="fa fa-mobile fa-10x fa-blue" aria-hidden="true"></i>
+            </div>
+            <div class="feature-description">
+              <p>Ready to use HTML/CSS device <br> mockups, no Photoshop required!</p>
+            </div>
+          </div>
+          <div class="feature-flexible">
+            <div class="feature-logo">
+              <i class="fa fa-camera fa-10x fa-blue" aria-hidden="true"></i>
+            </div>
+            <div class="feature-description">
+              <p>Ready to use HTML/CSS device <br> mockups, no Photoshop required!</p>
+            </div>      
+          </div>
+        </div>
+        <div class="features-content-below">
+          <div class="feature-free">
+            <div class="feature-logo">
+              <i class="fa fa-gift fa-10x fa-blue" aria-hidden="true"></i>
+            </div>
+            <div class="feature-description">
+              <p>Ready to use HTML/CSS device <br> mockups, no Photoshop required!</p>    
+            </div>
+          </div>
+          <div class="feature-opensource">
+            <div class="feature-logo">
+              <i class="fa fa-unlock fa-10x fa-blue" aria-hidden="true"></i>
+            </div>
+            <div class="feature-description">
+              <p>Ready to use HTML/CSS device <br> mockups, no Photoshop required!</p>    
+            </div>      
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 	<!-- Callout -->
-	<!-- Footer -->
+  <!-- Footer -->
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="js/script.min.js"></script>
 </body>
 </html>

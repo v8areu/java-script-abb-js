@@ -8,3 +8,27 @@ section#page-download {
   color: #fff;
   font-family: $primary-font;
 }
+
+.download-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.download-buttons {
+  margin-top: 3rem;
+}
+
+.download-button-android {
+
+  img {
+    width: 50rem;
+    height: auto;
+
+    @media screen and (max-width: $width-minimum-pc) {
+      width: 35rem;
+    }
+  }
+}

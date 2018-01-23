@@ -1,8 +1,9 @@
 const gulp = require('gulp');
+const ts = require('gulp-typescript');
 const sass = require('gulp-sass');
 const cleanCss = require('gulp-clean-css');
 const useref = require('gulp-useref');
-const uglify = require('gulp-uglify');
+const uglifyEs = require('gulp-uglify-es').default;
 const gulpIf = require('gulp-if');
 const rename = require('gulp-rename');
 const browserSync = require('browser-sync').create();
@@ -56,7 +57,7 @@ gulp.task('js:minify', function() {
     './app/js/*.js',
     '!./app/js/*.min.js'
   ])
-  .pipe(uglify())
+  .pipe(uglifyEs())
   .pipe(rename({
     suffix: '.min'
   }))
