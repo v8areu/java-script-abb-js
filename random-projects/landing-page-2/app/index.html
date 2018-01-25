@@ -12,6 +12,7 @@
   <title>App Landing Page</title>
 </head>
 <body>
+
   <!-- Navigation -->
   <nav id="page-nav">
     <div class="navbar-head">
@@ -28,7 +29,29 @@
         <a href="">Contact</a>
       </li>
     </ul>
+
+    <!-- Navbar for small screen -->
+    <ul class="navbar-ul-small">
+        <li>
+          <input id="navbar-checkbox" type="checkbox" name="menu"/>
+          <label for="navbar-checkbox">Menu</label>
+          <ul class="navbar-submenu">
+            <li class="navbar-item">
+              <a href="">Download</a>
+            </li>
+            <li class="navbar-item">
+              <a href="">Features</a>
+            </li>
+            <li class="navbar-item">
+              <a href="">Contact</a>
+            </li>
+          </ul>          
+        </li>
+      </ul>
   </nav>
+
+  <!-- Navigation for small screen -->
+
 	<!-- Header -->
 	<header id="page-header">
 		<div class="header-wrapper">
@@ -36,8 +59,8 @@
 				<div class="header-description">
 					<div class="header-description-text">
 						<h1>
-							App Landing Page will help you beautifully showcase your
-							new mobile application, or anything else!
+							App Landing Page will help you <br>beautifully showcase your
+							new <br>mobile application, or anything else!
             </h1>
 					</div>
 					<div class="header-description-button">	
@@ -59,7 +82,8 @@
 				</div>
 			</div>
 		</div>
-	</header>
+  </header>
+  
   <!-- Download -->
   <section id="page-download">
     <div class="download-inner">      
@@ -79,6 +103,7 @@
       </div>
     </div>
   </section>
+
   <!-- Features -->
   <section id="page-features">
     
@@ -138,9 +163,48 @@
       </div>
     </div>
   </section>
-	<!-- Callout -->
+
+  <!-- Callout -->
+  <section id="page-callout">
+    <div class="callout-inner">
+      <div class="callout-header">
+        <h1>Stop waiting. <br>Start building.</h1>
+      </div>
+      <div class="callout-button">
+        <a href="#" class="costum-button">Let's Get Started!</a>				
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
-  
+  <footer id="page-footer">
+    <section class="footer-social">
+      <div class="footer-social-inner">
+        <div class="footer-social-text">
+          <h1>We love new friends!</h1>
+        </div>
+        <div class="footer-social-buttons">
+          <div id="footer-social-twitter">
+            <i class="fa fa-twitter fa-3x" aria-hidden="true"></i>
+          </div>
+          <div id="footer-social-facebook">
+            <i class="fa fa-facebook fa-3x" aria-hidden="true"></i>
+          </div>
+          <div id="footer-social-google-plus">
+            <i class="fa fa-google-plus fa-3x" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="footer-copyright">
+      <p>Copyright Your website, All Rights Reserved</p>
+      <ul class="footer-list">
+        <li class="list-item"></li>
+        <li class="list-item"></li>
+        <li class="list-item"></li>
+      </ul>
+    </section>
+  </footer>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="js/script.min.js"></script>
 </body>

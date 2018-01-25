@@ -2,7 +2,7 @@ $(document).ready(function() {
 
   // change navbar color when scrolling
   let scrollStart = 0;
-  let startNavChange = $('#page-device-top');
+  let startNavChange = $('.header-mockup');
   let offset = startNavChange.offset();
 
   // define minimum size for media queries
@@ -11,7 +11,9 @@ $(document).ready(function() {
 
   $(document).scroll(function() {
     let scrollStart = $(this).scrollTop();
-    if (scrollStart > offset.top && mq.matches) {
+    
+    // navbar change color if scroll begin
+    if (scrollStart > 0 && mq.matches) {
       $('#page-nav').addClass('navbar-colored');
       $('#page-nav a').css('color', '#fff');
     } else {

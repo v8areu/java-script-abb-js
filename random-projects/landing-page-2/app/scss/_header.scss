@@ -1,5 +1,11 @@
 #page-header, .header-wrapper {
-	height: 100%;
+  height: 100%;
+  width: auto;
+
+  @media screen and (max-width: $width-minimum-pc) {
+    height: auto;
+    position: relative;
+  }
 }
 
 .header-wrapper {
@@ -9,11 +15,11 @@
 	justify-content: center;
   align-items: center;
   font-family: $primary-font;
+  width: auto;
 
   @media screen and (max-width: $width-minimum-pc) {
-    padding-top: 5rem;
+    padding: 5rem 0;
   }
-
 }
 
 .header-inner-wrapper {
@@ -21,11 +27,16 @@
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
-  width: 100%;
+  width: auto;
   height: 100%;
 
   > div {
     width: 45rem;
+
+    @media screen and (min-width: $width-small-phone) and 
+    (max-width: $width-minimum-pc - 1px) {
+      width: auto;
+    }
   }
 
   @media screen and (max-width: $width-minimum-pc) {
@@ -60,11 +71,16 @@
     margin-bottom: 3rem;
     margin-top: 1rem;
   }
+
+  @media screen and (min-width: $width-small-phone) and 
+  (max-width: $width-medium-tablet) {
+    font-size: 60%;
+  }
 }
 
 .header-mockup {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
 }
 

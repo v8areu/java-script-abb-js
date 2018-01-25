@@ -45,3 +45,13 @@ a.costum-button {
   text-decoration: none;
   color: #000;
 }
+
+
+// for changing size of the mockup
+
+@media screen and (max-width: $width-small-laptop), 
+screen and (max-height: $height-small-laptop) {
+  .device-wrapper {
+    width: 250px;
+  }
+}

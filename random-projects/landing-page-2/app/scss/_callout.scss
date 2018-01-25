@@ -1,0 +1,40 @@
+section#page-callout {
+  background: url(../img/callout-img.jpg) center no-repeat;
+  background-size: cover;
+  height: 100%;
+  font-family: $primary-font;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  
+  @media screen and (min-width: $width-small-phone) and 
+  (max-width: $width-minimum-pc - 1px) {
+    justify-content: center;
+  }
+}
+
+.callout-inner {
+  margin-right: 20rem;
+
+  @media screen and (min-width: $width-small-phone) and 
+  (max-width: $width-minimum-pc - 1px) {
+    margin-right: 0;
+  }
+}
+
+.callout-header {
+
+  h1 {
+    font-size: 400%;
+
+    @media screen and (min-width: $width-small-phone) and 
+    (max-width: $width-medium-tablet - 1px) {
+      font-size: 250%;
+    }    
+  }
+}
+
+.callout-button {
+  margin-top: 3rem;
+}

@@ -1,10 +1,11 @@
 section#page-features {
   width: 100%;
-  height: 100rem;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #fff;
+  padding: 8rem 0;
 }
 
 .features-inner {
@@ -15,12 +16,17 @@ section#page-features {
   flex-wrap: wrap;
   font-family: $primary-font;
 
+  @media screen and (max-width: $width-minimum-pc) {
+    flex-direction: column;
+  }
+
 }
 
 .features-header {
-  padding: 10rem 0;
   text-align: center;
   width: 100%;
+  margin-bottom: 5rem;
+  font-size: 150%;
 }
 
 .features-content {
@@ -28,19 +34,71 @@ section#page-features {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  height: 60rem;
-  margin-left: 5rem;
+  height: auto;
+
+  @media screen and (min-width: $width-minimum-pc) {
+    margin-left: 5rem;
+  }
+
+  @media screen and (min-width: $width-large-tablet) and
+  (max-width: $width-minimum-pc - 1px) {
+    margin-top: 5rem;
+  }
+
+
 
   > div {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (min-width: $width-small-phone) and
+    (max-width: $width-large-tablet - 1px) {
+      flex-direction: column;
+    }
     
     > div {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      margin: 2rem;
+
+      @media screen and (min-width: $width-small-phone) and
+      (max-width: $width-large-tablet - 1px) {
+        margin-top: 4rem;
+      }
     }
+  }
+}
+
+.features-content-top {
+  @media screen and (min-width: $width-minimum-pc) {
+    margin-bottom: 5rem;
+  }
+}
+
+.feature-mockup,
+.feature-free {
+  @media screen and (min-width: $width-minimum-pc) {
+    margin-right: 2rem;
+  }
+
+  @media screen and (min-width: $width-large-tablet) and
+  (max-width: $width-minimum-pc - 1px) {
+    margin-right: 5rem;
+  }
+
+}
+
+.feature-flexible,
+.feature-opensource {
+  @media screen and (min-width: $width-minimum-pc) {
+    margin-left: 2rem;
+  }
+
+  @media screen and (min-width: $width-large-tablet) and
+  (max-width: $width-minimum-pc - 1px) {
+    margin-left: 5rem;
   }
 }

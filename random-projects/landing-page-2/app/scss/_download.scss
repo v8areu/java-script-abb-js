@@ -17,6 +17,14 @@ section#page-download {
   text-align: center;
 }
 
+.download-description {
+
+  margin: 0 1.5rem;
+
+  p {
+    word-wrap: break-word;
+  }
+}
 .download-buttons {
   margin-top: 3rem;
 }
@@ -27,8 +35,13 @@ section#page-download {
     width: 50rem;
     height: auto;
 
-    @media screen and (max-width: $width-minimum-pc) {
+    @media screen and (max-width: $width-minimum-pc - 1px) {
       width: 35rem;
+    }
+
+    @media screen and (min-width: $width-small-phone) and 
+    (max-width: $width-medium-tablet) {
+      width: 25rem;
     }
   }
 }
