@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  "use strict";
 
   // change navbar color when scrolling
   // let scrollStart = 0;
@@ -35,7 +36,7 @@ $(document).ready(function() {
     .not('a[href="#"]')
     .not('a[href="#0"]')
     .click(function(event) {
-      
+
       if (
       location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') &&
       location.hostname == this.hostname) {
@@ -57,8 +58,36 @@ $(document).ready(function() {
               $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
               $target.focus(); // Set focus again
             }
-          })
+          });
         }
       }
     });
+
+    // change device image if landscape
+    // default
+    if (window.matchMedia("(orientation: portrait)").matches) {
+      // you're in PORTRAIT mode
+      console.log("portrait-default");
+    } else {
+      console.log("landscape-default");
+    }    
+
+    $(window).bind('orientationchange', function(event) {
+      
+      console.log(screen.orientation);
+
+      if (window.matchMedia("(orientation: landscape)").matches) {
+        // you're in PORTRAIT mode
+        console.log("landscape");
+  
+      } else {
+        console.log("portrait");
+
+      }
+
+    });
+
+
+
+    $('#page-device-top')
 });

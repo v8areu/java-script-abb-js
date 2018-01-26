@@ -1,11 +1,14 @@
 const gulp = require('gulp');
-const ts = require('gulp-typescript');
 const sass = require('gulp-sass');
 const cleanCss = require('gulp-clean-css');
 const useref = require('gulp-useref');
 const uglifyEs = require('gulp-uglify-es').default;
+const imageMin = require('gulp-imagemin');
 const gulpIf = require('gulp-if');
 const rename = require('gulp-rename');
+const del = require('del');
+const cache = require('gulp-cache');
+const runSequence = require('run-sequence');
 const browserSync = require('browser-sync').create();
 
 // import html5-device-mockups
@@ -22,6 +25,7 @@ gulp.task('css:device-img', function() {
   return gulp.src(
     './node_modules/html5-device-mockups/device-mockups/**/*'
   )
+    .pipe(imageMin())
     .pipe(gulp.dest('app/device-mockups'));
 })
 
@@ -43,6 +47,7 @@ gulp.task('css:minify', ['css:compile'], function() {
     suffix: '.min'
   }))
   .pipe(gulp.dest('./app/css'))
+  .pipe(gulp.dest('./dist/css'))  
   .pipe(browserSync.reload({
     stream: true
   }));
@@ -62,6 +67,7 @@ gulp.task('js:minify', function() {
     suffix: '.min'
   }))
   .pipe(gulp.dest('./app/js'))
+  .pipe(gulp.dest('./dist/js'))
   .pipe(browserSync.reload({
     stream: true
   }));
@@ -79,6 +85,37 @@ gulp.task('browserSync', function() {
   });
 });
 
+gulp.task('images:device', function() {
+  return gulp.src(
+    './node_modules/html5-device-mockups/device-mockups/**/*'
+  )
+    .pipe(cache(imageMin()))
+    .pipe(gulp.dest('app/device-mockups'))
+    .pipe(gulp.dest('dist/device-mockups'));
+});
+
+gulp.task('images:background', function() {
+  return gulp.src('./app/img/**/*')
+    .pipe(cache(imageMin()))
+    .pipe(gulp.dest('dist/img'));
+});
+
+gulp.task('images', ['images:device', 'images:background']);
+
+// copy html files
+gulp.task('html', function() {
+  return gulp.src('./app/*.html')
+    .pipe(gulp.dest('dist'));
+});
+
+// clear dist folder
+gulp.task('clean:dist', function() {
+  return del.sync('dist');
+})
+
+gulp.task('clean', ['clean:dist']);
+
+// for development purpose
 gulp.task('watch', ['browserSync', 'css', 'js'], function () {
   gulp.watch('app/scss/**/*.scss', ['css']);
   gulp.watch('app/js/*.js', ['js']);
@@ -87,3 +124,10 @@ gulp.task('watch', ['browserSync', 'css', 'js'], function () {
   gulp.watch('app/*.html', browserSync.reload);
 });
 
+// for building purpose (finalization)
+gulp.task('build', function (callback) {
+  runSequence('clean', 
+    ['html', 'css', 'js', 'images',],
+    callback
+  )
+})
