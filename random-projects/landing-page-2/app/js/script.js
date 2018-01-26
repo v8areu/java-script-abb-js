@@ -62,32 +62,4 @@ $(document).ready(function() {
         }
       }
     });
-
-    // change device image if landscape
-    // default
-    if (window.matchMedia("(orientation: portrait)").matches) {
-      // you're in PORTRAIT mode
-      console.log("portrait-default");
-    } else {
-      console.log("landscape-default");
-    }    
-
-    $(window).bind('orientationchange', function(event) {
-      
-      console.log(screen.orientation);
-
-      if (window.matchMedia("(orientation: landscape)").matches) {
-        // you're in PORTRAIT mode
-        console.log("landscape");
-  
-      } else {
-        console.log("portrait");
-
-      }
-
-    });
-
-
-
-    $('#page-device-top')
 });
