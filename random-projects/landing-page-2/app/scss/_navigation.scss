@@ -30,6 +30,15 @@ nav#page-nav {
   h3 {
     margin-left: 10rem;
 
+    &:active {
+      color: $gray;
+    }
+    a {
+      text-decoration: none;
+      color: #000;
+      display: inline-block;
+    }
+
     @media screen and (max-width: $width-minimum-pc) {
       margin-left: 2rem;
       font-size: 80%;
@@ -118,7 +127,7 @@ ul.navbar-ul-small {
 
     li a {
       display: block;
-      background-color: $secondary-color;
+      background-color: #fff;
       text-decoration: none;
       color: #000;
       padding: 1rem;

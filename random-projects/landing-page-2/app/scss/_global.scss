@@ -33,8 +33,15 @@ h3 {
   border-radius: 1.5rem;
   @include transition(0.3s ease-out);
 
-
   &:hover {
+    @media screen and (min-width: $width-small-laptop) {
+      background-color: $primary-color;
+      color: #fff;
+      @include transition(0.3s ease-out);  
+    }
+  }
+
+  &:active {
     background-color: $primary-color;
     color: #fff;
     @include transition(0.3s ease-out);

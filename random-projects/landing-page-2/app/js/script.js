@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
   // change navbar color when scrolling
-  let scrollStart = 0;
+  // let scrollStart = 0;
   let startNavChange = $('.header-mockup');
   let offset = startNavChange.offset();
 
@@ -12,6 +12,12 @@ $(document).ready(function() {
   $(document).scroll(function() {
     let scrollStart = $(this).scrollTop();
     
+    // hide the navbar small when the user scroll
+    // or when user click any menu
+    if (scrollStart != 0) {
+      $('#navbar-checkbox').prop('checked', false);
+    }
+
     // navbar change color if scroll begin
     if (scrollStart > 0 && mq.matches) {
       $('#page-nav').addClass('navbar-colored');
@@ -21,4 +27,38 @@ $(document).ready(function() {
       $('#page-nav a').css('color', '#000');
     }
   });
+
+  // smooth scrolling
+  // first, select all anchor tag which start with hash
+  $('a[href*="#"]')
+    // which not # and #0
+    .not('a[href="#"]')
+    .not('a[href="#0"]')
+    .click(function(event) {
+      
+      if (
+      location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') &&
+      location.hostname == this.hostname) {
+        let target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+
+        if (target.length) { // target.length if true is = 1
+          event.preventDefault();
+          $('html, body').animate({
+            scrollTop: target.offset().top
+          }, 1000, "easeInOutCirc", function() {
+            // callback after animation
+            // must change focus
+            let $target = $(target);
+            $target.focus();
+            if ($target.is(":focus")) {
+              return false;
+            } else {
+              $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+              $target.focus(); // Set focus again
+            }
+          })
+        }
+      }
+    });
 });
