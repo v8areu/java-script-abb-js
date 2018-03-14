@@ -1,28 +1,74 @@
 function permAlone(str) {
 
-  // calculate str length\
-  const strLength = str.length;
+  let permArr = [];
 
-  // change str to array of char
-  const strArray = str.split('');
 
-  // recursive function
-  let permRecursive = function(strArray, strDeep, countPerm, recursiveArray) {
-    
-    if (strDeep === str.length - 1) {
-      return countPerm;
+  function generate(n, arr) {
+
+    if (n === 1) {
+      permArr.push(arr.join(""));
     } else {
-      strArray.forEach((char, charIndex) => {
-        const tempRec = permRecursive(strArray, charIndex, countPerm);
-        recursiveArray.push(tempRec);
-      });
+
+      for (let i = 0; i < n - 1; i++) {
+         generate(n - 1, arr);
+
+        if (n % 2 === 0) {
+
+          let temp = arr[i];
+          arr[i] = arr[n - 1];
+          arr[n - 1] = temp;
+
+        } else {
+
+          let temp = arr[0];
+          arr[0] = arr[n - 1];
+          arr[n - 1] = temp;
+
+        }
+      }
+      generate(n - 1, arr);
     }
+  }
 
-  };
+  generate(str.length, str.split(""));
 
-  // console.log(permRecursive(str, 0, 0));
+  let newPermArr = permArr.filter((item) => {
+    let itemLength = item.length;
 
-  return str;
+    // change item to array;
+    let itemArray = item.split("");
+
+    let newItemArray = itemArray.filter((char, index, arr) => {
+
+      if (index === 0) {
+        if (arr[index] !== arr[index + 1]) {
+          return true;
+        } else {
+          return false;
+        }
+      } else if (index === arr.length - 1) {
+        if (arr[index] !== arr[index - 1]) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        if (arr[index] !== arr[index - 1] && arr[index] !== arr[index + 1]) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    });
+
+    let newItem = newItemArray.join("");
+
+    if (newItem.length === itemLength) {
+      return true;
+    }
+  });
+
+  return newPermArr.length;
 }
 
-permAlone('aab');
+permAlone('zzzzzz');
